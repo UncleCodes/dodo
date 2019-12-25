@@ -34,12 +34,13 @@ public class WeixinJsonUtil {
         return OBJECT_MAPPER.readValue(jsonStr, clazz);
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> T toObject(String jsonStr, TypeReference<?> typeReference) throws IOException,
             JsonParseException, JsonMappingException {
         if (StringUtils.isBlank(jsonStr)) {
             return null;
         }
-        return OBJECT_MAPPER.readValue(jsonStr, typeReference);
+        return (T) OBJECT_MAPPER.readValue(jsonStr, typeReference);
     }
 
     public static <T> T toCollectionObject(String jsonStr, Class<?> collectionClass, Class<?>... elementClasses)

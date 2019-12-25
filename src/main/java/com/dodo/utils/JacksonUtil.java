@@ -37,12 +37,13 @@ public class JacksonUtil {
     }
 
     // Json转Java对象，类型安全
+    @SuppressWarnings("unchecked")
     public static <T> T toObject(String jsonStr, TypeReference<?> typeReference) throws IOException,
             JsonParseException, JsonMappingException {
         if (StringUtils.isBlank(jsonStr)) {
             return null;
         }
-        return OBJECT_MAPPER.readValue(jsonStr, typeReference);
+        return (T) OBJECT_MAPPER.readValue(jsonStr, typeReference);
     }
 
     // Json转Java集合对象，类型安全，可使用toObject(String jsonStr, TypeReference<?> typeReference) 替代

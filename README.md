@@ -88,7 +88,7 @@
 ### （1）安全稳定的基础框架
 基于Spring MVC-5.1、Hibernate-5.4、Freemarker、Druid框架组合
 
-管理系统安全框架：Spring Security-5.1
+管理系统安全框架：Spring Security-5.2
 
 安全增强：登录加盐，动态Salt、静态Salt；支持随时变换后台访问地址，上线后由运营同学修改，增加安全性
 
