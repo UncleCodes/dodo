@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    <!-- customer define none security pages-->
+    <http pattern="${dodo.backmanage.view.rootPath}/enjoy/**" security="none"/>
+    <http pattern="/enjoy/**" security="none"/>
+    <http use-expressions="true" entry-point-ref="authenticationProcessingFilterEntryPoint" authentication-manager-ref="dodoAuthenticationManager">
+        <custom-filter position="CONCURRENT_SESSION_FILTER" ref="concurrencyFilter" />
+       	<custom-filter position="FORM_LOGIN_FILTER" ref="loginFilter" />
+		<custom-filter before="FILTER_SECURITY_INTERCEPTOR" ref="securityFilter" />
+		<custom-filter position="LOGOUT_FILTER" ref="logoutFilter" />
+		<session-management session-authentication-strategy-ref="sessionAuthenticationStrategy" /> 
+		<access-denied-handler ref="dodoAccessDeniedHandler"/>
+	    <csrf disabled="true"/>
+	    <headers>
+		    <frame-options disabled="true"/>
+		    <content-type-options disabled="true"/>
+	    </headers>
+    </http>
+    
+    <!-- logout -->
+    <beans:bean id="logoutHandler"  
+        class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler">  
+        <beans:property name="invalidateHttpSession" value="true" />
+        <beans:property name="clearAuthentication" value="true" />
+    </beans:bean>  
+
+    <beans:bean id="dodoLogoutHandler"  
+        class="com.dodo.privilege.security.DodoLogoutHandler">  
+        <beans:property name="hqlHelperService" ref="hqlHelperServiceImpl" />  
+    </beans:bean> 
+    
+    <beans:bean id="logoutSuccessHandler"  
+        class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler" >
+    	<beans:property name="defaultTargetUrl" value="${dodo.common.config.web.backurl}${dodo.backmanage.view.rootPath}/enjoy/login_index.jhtml" />
+    	<beans:property name="alwaysUseDefaultTargetUrl" value="true" />
+    </beans:bean>      
+    
+    <beans:bean id="logoutFilter"  
+        class="org.springframework.security.web.authentication.logout.LogoutFilter" >
+        <beans:constructor-arg name="logoutSuccessHandler" ref="logoutSuccessHandler"/>
+        <beans:constructor-arg name="handlers">
+        	<beans:list>
+        		<beans:ref bean="dodoLogoutHandler" />  
+        		<beans:ref bean="logoutHandler" />  
+        	</beans:list>
+        </beans:constructor-arg>
+    	<beans:property name="filterProcessesUrl" value="${dodo.backmanage.view.rootPath}/logout.jhtml" />
+    </beans:bean>  
+    
+    <!-- login -->
+    <beans:bean id="loginFilter"
+		class="com.dodo.privilege.security.DodoUsernamePasswordAuthenticationFilter">
+		<!-- customer define filterProcessesUrl == ${dodo.backmanage.view.rootPath}/login_checkok.jhtml -->
+		<beans:property name="authenticationManager" ref="dodoAuthenticationManager" />
+		<beans:property name="authenticationSuccessHandler" ref="loginLogAuthenticationSuccessHandler" />
+		<beans:property name="authenticationFailureHandler" ref="simpleUrlAuthenticationFailureHandler" />
+		<beans:property name="filterProcessesUrl" value="${dodo.backmanage.view.rootPath}/login_checkok.jhtml" />
+		<beans:property name="sessionAuthenticationStrategy" ref="sessionAuthenticationStrategy"/>
+		<beans:property name="hqlHelperService" ref="hqlHelperServiceImpl" />
+	</beans:bean>
+	
+	<beans:bean id="simpleUrlAuthenticationFailureHandler"
+		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<beans:property name="defaultFailureUrl" value="${dodo.common.config.web.backurl}${dodo.backmanage.view.rootPath}/enjoy/login_index.jhtml" />
+	</beans:bean>    
+	
+	<beans:bean id="loginLogAuthenticationSuccessHandler"
+		class="com.dodo.privilege.security.DodoSavedRequestAwareAuthenticationSuccessHandler">
+		<!-- customer define defaultTargetUrl == ${dodo.common.config.web.backurl}${dodo.backmanage.view.rootPath}/framemenu/main.jhtml -->
+		<beans:property name="defaultTargetUrl" value="${dodo.common.config.web.backurl}${dodo.backmanage.view.rootPath}/framemenu/main.jhtml" />
+		<beans:property name="alwaysUseDefaultTargetUrl" value="true" />
+		<beans:property name="hqlHelperService" ref="hqlHelperServiceImpl" />
+		<beans:property name="sessionRegistry" ref="sessionRegistry" />
+	</beans:bean>
+	
+	<beans:bean id="passwordEncoder" class="com.dodo.security.DodoPlainTextPasswordEncoder" />
+
+    <authentication-manager alias="dodoAuthenticationManager">
+        <authentication-provider user-service-ref="dodoSecurityServiceImpl">
+        	<password-encoder ref="passwordEncoder" />
+        </authentication-provider>
+    </authentication-manager>	
+	
+	<!-- session -->
+	<beans:bean id="sessionRegistry"  class="org.springframework.security.core.session.SessionRegistryImpl" />   
+	 	
+	<beans:bean id="sessionAuthenticationStrategy"
+        class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy">
+        <beans:constructor-arg>
+            <beans:list>                
+                <beans:bean  
+			        class="org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy">  
+			        <beans:constructor-arg name="sessionRegistry"  
+			            ref="sessionRegistry" />  
+			        <beans:property name="maximumSessions" value="1" />
+			        <beans:property name="exceptionIfMaximumExceeded" value="false" />
+			    </beans:bean>  
+
+                <beans:bean
+                    class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy">
+                    <beans:property name="migrateSessionAttributes" value="true"/>
+                </beans:bean>
+				<beans:bean
+                    class="org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy">
+                    <beans:constructor-arg ref="sessionRegistry" />
+                </beans:bean>
+            </beans:list>
+        </beans:constructor-arg>
+    </beans:bean>          
+    
+    <!-- 权限判断 -->
+	<beans:bean id="dodoAccessDecisionManager" class="com.dodo.security.DodoAccessDecisionManager"/>
+	
+    <beans:bean id="securityFilter" class="com.dodo.security.DodoSecurityFilter">
+    	<beans:property name="authenticationManager" ref="dodoAuthenticationManager" />
+    	<beans:property name="accessDecisionManager" ref="dodoAccessDecisionManager" />
+    	<beans:property name="securityMetadataSource" ref="dodoSecurityMetadataSource" />
+    </beans:bean>
+	
+	<beans:bean id="dataSourceProviderImpl" class="com.dodo.privilege.security.DataSourceProviderImpl">
+		<beans:property name="hqlHelperService" ref="hqlHelperServiceImpl" />
+		<beans:property name="adminRootPath" value="${dodo.backmanage.view.rootPath}" />
+	</beans:bean>
+
+    <beans:bean id="dodoSecurityMetadataSource" class="com.dodo.security.DodoSecurityMetadataSource">
+		<beans:property name="dataSourceProvider" ref="dataSourceProviderImpl" />
+	</beans:bean>
+
+	<beans:bean id="dodoAccessDeniedHandler" class="com.dodo.privilege.security.DodoAccessDenyHandlerImpl">
+		<beans:property name="accessDenyPage" value="${dodo.backmanage.view.rootPath}/enjoy/accessdeny.jhtml" />
+	</beans:bean>
+	
+	
+	
+	<beans:bean id="sessionInformationExpiredStrategy" class="org.springframework.security.web.session.SimpleRedirectSessionInformationExpiredStrategy">
+		<beans:constructor-arg name="invalidSessionUrl" value="${dodo.common.config.web.backurl}${dodo.backmanage.view.rootPath}/enjoy/otherlogin.jhtml" ></beans:constructor-arg>
+	</beans:bean>
+	
+    <beans:bean id="concurrencyFilter"  
+        class="com.dodo.privilege.security.DodoConcurrentSessionFilter">  
+        <beans:constructor-arg name="sessionRegistry" ref="sessionRegistry"></beans:constructor-arg>
+        <beans:constructor-arg name="sessionInformationExpiredStrategy" ref="sessionInformationExpiredStrategy"></beans:constructor-arg>
+        <beans:property name="hqlHelperService" ref="hqlHelperServiceImpl" />
+        <beans:property name="logoutHandlers">
+        	<beans:list>
+        		<beans:ref bean="logoutHandler" />  
+        	</beans:list>
+        </beans:property>  
+    </beans:bean>  
+
+        
+	<beans:bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<beans:constructor-arg name="loginFormUrl" value="${dodo.common.config.web.backurl}${dodo.backmanage.view.rootPath}/enjoy/timeout.jhtml" />
+	</beans:bean>
+		
+</beans:beans>

@@ -1,0 +1,56 @@
+package com.dodo.privilege.enums;
+
+import com.dodo.common.enums.EnumAttributeConverter;
+import com.dodo.common.enums.EnumInterface;
+
+/**
+ * <p>Dodo Framework. <a href="https://www.bydodo.com">https://www.bydodo.com</a>
+ * 
+ * @author uncle.code@bydodo.com
+ * @author mingming@bydodo.com
+ * @author dodo@bydodo.com
+ * @version v 1.0
+ */
+public enum ConvertStatus implements EnumInterface{
+	NEW(1,"dodo.privilege.enums.ConvertStatus.name.new","dodo.privilege.enums.ConvertStatus.desc.new"),
+	ING(2,"dodo.privilege.enums.ConvertStatus.name.ing","dodo.privilege.enums.ConvertStatus.desc.ing"),
+	OK(3,"dodo.privilege.enums.ConvertStatus.name.ok","dodo.privilege.enums.ConvertStatus.desc.ok"),
+	ERROR(4,"dodo.privilege.enums.ConvertStatus.name.error","dodo.privilege.enums.ConvertStatus.desc.error"),
+	NOFILE(5,"dodo.privilege.enums.ConvertStatus.name.nofile","dodo.privilege.enums.ConvertStatus.desc.nofile"),
+	NOTSUPPORT(6,"dodo.privilege.enums.ConvertStatus.name.nosupport","dodo.privilege.enums.ConvertStatus.desc.nosupport"),
+	EXCEPTION(7,"dodo.privilege.enums.ConvertStatus.name.exception","dodo.privilege.enums.ConvertStatus.desc.exception");
+	private ConvertStatus(Integer seq,String nameKey,String descKey) {
+		this.nameKey = nameKey;
+		this.descKey = descKey;
+		this.seq = seq;
+	}
+
+	private Integer seq;
+	private String name;
+	private String nameKey;
+	private String desc;
+	private String descKey;
+	public String getName() {
+		return name;
+	}
+	public String getNameKey() {
+		return nameKey;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public String getDescKey() {
+		return descKey;
+	}
+    @Override
+    public Integer getSeq() {
+        return seq;
+    }	
+    public static class Converter extends EnumAttributeConverter<ConvertStatus> {
+
+        @Override
+        public Class<ConvertStatus> getClazz() {
+            return ConvertStatus.class;
+        }
+    }
+}

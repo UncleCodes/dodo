@@ -1,0 +1,127 @@
+* {
+    word-wrap: break-word;
+}
+html, body, h1, h2, h3, h4, h5, h6, hr, p, iframe, dl, dt, dd, ul, ol, li, pre, form, button, input, textarea, th, td, fieldset {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    *position: static;
+    color: #333;
+}
+body, th, td, button, input, select, textarea {
+    font-family: "Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,Verdana,sans-serif,"WenQuanYi Micro Hei","\5B8B\4F53";
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    line-height: 1.6;
+}
+body {
+    position: relative;
+    background: #f2f2f2;
+    background-repeat: repeat;
+    background-image: none;
+    background-size: auto;
+}
+.login {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 600px;
+}
+.login .content {
+    width: 480px;
+    box-sizing: border-box;
+    padding: 20px 50px;
+    height: auto;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    margin: 50px auto 0 auto;
+}
+.login .title {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+table {
+    width: 100%;
+    empty-cells: show;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.table th, .table td {
+    padding: 25px 8px;
+    line-height: 20px;
+}
+.table td {
+    text-align: left;
+}
+.table td {
+    padding: 10px 3px;
+}
+.input-text {
+    width: 340px;
+    height: 37px;
+    line-height: 37px;
+    border: 1px solid #dfe5e7;
+    padding: 0 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+    color: #777777;
+}
+.input-text, .textarea {
+    -webkit-transition: all .2s linear 0s;
+    -moz-transition: all .2s linear 0s;
+    -o-transition: all .2s linear 0s;
+    transition: all .2s linear 0s;
+}
+.input-text.checkcode {
+    width: 250px;
+    float: left;
+}
+img {
+    border: 0;
+    vertical-align: middle;
+}
+.login_sub {
+    background: #00aaee;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    border: 0;
+    height: 39px;
+    line-height: 39px;
+    width: 372px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+}
+button, input[type="button"], input[type="submit"] {
+    line-height: normal !important;
+}
+a, area {
+    outline: none;
+    blr: expression(this.onFocus=this.blur());
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+a.link {
+    color: #0e90d2;
+}
+.footer {
+    text-align: center;
+    padding: 25px 0;
+}
+.login .footer {
+    background-color: #17baef;
+    color: #FFFFFF;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

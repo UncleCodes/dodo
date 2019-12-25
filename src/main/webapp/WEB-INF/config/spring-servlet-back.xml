@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc.xsd
+			">
+
+	<bean id="propertyConfigurerBack" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/classes/dodo_framework_config.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="cacheSeconds" value="-1" />
+		<property name="basenames">
+			<list>
+				<value>/WEB-INF/languages/back/messages</value>
+				<value>/WEB-INF/languages/back/field_name_keys</value>
+				<value>/WEB-INF/languages/back/privilege_messages</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<value>5242880</value>
+		</property>
+		<property name="defaultEncoding">
+			<value>UTF-8</value>
+		</property>
+		<property name="uploadTempDir">
+			<value>upload/temp/</value>
+		</property>
+	</bean>
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieName" value="clientlanguage" />
+		<property name="cookieMaxAge" value="-1" />
+	</bean>
+	<bean id="exceptionResolver" class="com.dodo.privilege.interceptor.AdminContextExceptionResolver" />
+	<bean id="freemarkerViewResolver" class="com.dodo.common.fmk.resolver.DodoFreeMarkerViewResolver">
+		<property name="prefix" value="/view/back/"/>
+		<property name="suffix" value=".html"/>
+		<property name="contentType" value="text/html; charset=UTF-8"/>
+		<property name="exposeRequestAttributes" value="false"/>
+		<property name="exposeSessionAttributes" value="false"/>
+		<property name="exposeSpringMacroHelpers" value="true"/>
+	</bean>
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.**.action">
+		<context:exclude-filter type="regex" expression="com.*.action.front.*"/>
+	</context:component-scan>
+	
+	<mvc:annotation-driven />  
+	<mvc:interceptors>  
+		<bean id="dodoAdminLocaleInterceptor" class="com.dodo.common.framework.interceptor.DodoAdminLocaleInterceptor">
+			<property name="defaultLocale" value="zh_CN" />
+		</bean>	
+		<bean id="dodoAdminThemeInterceptor" class="com.dodo.common.framework.interceptor.DodoAdminThemeInterceptor">
+			<property name="defaultTheme" value="cherry" />
+		</bean>	
+		<bean id="localeChangeInterceptor"
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+		<bean id="adminContextInterceptor"
+			class="com.dodo.privilege.interceptor.AdminContextInterceptor" >
+			<property name="hqlHelperService" ref="hqlHelperServiceImpl"/>
+		</bean>
+	</mvc:interceptors>  
+</beans>

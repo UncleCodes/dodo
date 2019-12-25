@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Test</title>
+<meta name="Author" content="Dodo" />
+<meta name="Copyright" content="Dodo" />
+</head>
+<body class="list">
+<h2>这是一个前前前前前前台测试页面，从报表页面【报表中心 - Demo报表 - 带跳转（前台）】跳转而来~</h2>
+<h3 id="content"></h3>
+</body>
+<script type="text/javascript">
+function queryURL(url){
+     var arr1 = url.split("?");
+     var params = arr1[1].split("&");
+     var obj = {};//声明对象
+     for(var i=0;i<params.length;i++){
+        var param = params[i].split("=");
+         obj[param[0]] = param[1];//为对象赋值
+     }
+     return obj;
+ }
+ var params = queryURL(location.href);
+ document.getElementById('content').innerHTML='参数:fieldValue='+params['fieldValue'];
+</script>
+</html>

@@ -1,0 +1,9 @@
+#----- begin Chinese Simplified support package (2004-jul-27)
+cidToUnicode	Adobe-GB1	"${languagedir}/Adobe-GB1.cidToUnicode"
+unicodeMap	ISO-2022-CN	"${languagedir}/ISO-2022-CN.unicodeMap"
+unicodeMap	EUC-CN		"${languagedir}/EUC-CN.unicodeMap"
+unicodeMap	GBK		"${languagedir}/GBK.unicodeMap"
+cMapDir		Adobe-GB1	"${languagedir}/CMap"
+toUnicodeDir			"${languagedir}/CMap"
+#displayCIDFontTT	Adobe-GB1	"${languagedir}/fonts/gkai00mp.ttf"
+#----- end Chinese Simplified support package

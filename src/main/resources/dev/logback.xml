@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <!-- SQL执行日志 -->
+  <appender name="execsqlLog" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+           <fileNamePattern>../logs/execsql_.%d{yyyy-MM-dd}.log</fileNamePattern>  
+       </rollingPolicy>  
+       <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">  
+           <pattern>%d{yyyy-MM-dd HH:mm:ss} %msg%n</pattern>
+       </encoder>  
+   </appender>    
+   
+   <!-- 慢SQL日志 -->
+   <appender name="slowsqlLog" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+       <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+           <fileNamePattern>../logs/slowsql_.%d{yyyy-MM-dd}.log</fileNamePattern>  
+       </rollingPolicy>  
+       <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">  
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %msg%n</pattern>
+       </encoder>  
+   </appender>  
+   
+  <!-- SQL执行日志 级别 WARN--> 
+  <logger name="druid.sql" level="WARN" additivity="false">  
+      <appender-ref ref="execsqlLog" />  
+  </logger> 
+  
+  <!-- 慢SQL日志 级别 ERROR--> 
+  <logger name="com.dodo.common.druid.StatFilter" level="ERROR" additivity="false">  
+      <appender-ref ref="slowsqlLog" />  
+  </logger> 
+      
+  <!-- 代码生成器日志 级别 INFO-->
+  <logger name="com.dodo.generate" level="INFO"/>
+  
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+  </root>
+
+</configuration>

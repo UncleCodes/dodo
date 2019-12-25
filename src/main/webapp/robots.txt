@@ -1,0 +1,6 @@
+# robots.txt for Dodo
+
+User-agent: *
+Disallow: /enjoy/
+Disallow: /res/
+Disallow: /html/

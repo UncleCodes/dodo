@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    	<display-name>dodo</display-name>
+    
+    <context-param>
+        <param-name>logbackDisableServletContainerInitializer</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <!--  druid 数据库连接池管理面板  -->
+	<servlet>
+	    <servlet-name>DruidStatView</servlet-name>
+	    <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>DruidStatView</servlet-name>
+	    <url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>    
+	
+	<!--  druid Web状态监控  -->
+	<filter>
+    	<filter-name>druidWebStatFilter</filter-name>
+    	<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+    	<init-param>
+      		<param-name>exclusions</param-name>
+      		<param-value>/css/*,/context/*,/plug-in/*,*.js,*.css,/druid*,/attached/*,*.jsp</param-value>
+    	</init-param>
+    	<init-param>
+      		<param-name>principalSessionName</param-name>
+      		<param-value>sessionInfo</param-value>
+    	</init-param>
+    	<init-param>
+      		<param-name>profileEnable</param-name>
+      		<param-value>true</param-value>
+    	</init-param>
+  	</filter>
+ 	<filter-mapping>
+    	<filter-name>druidWebStatFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+  	</filter-mapping>	
+	
+	<!-- Spring 配置文件 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/config/application-context.xml
+			/WEB-INF/config/applicationContext-security.xml
+		</param-value>
+	</context-param>
+	
+	<!-- Spring 字符集过滤  -->
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	    <init-param>
+	      <param-name>forceEncoding</param-name>
+	      <param-value>true</param-value>
+	    </init-param>		
+	</filter>
+	
+	<!-- Hibernate Session 绑定请求处理  -->
+	<filter>
+		<filter-name>osivFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+      		<param-name>excludeSuffixs</param-name>
+      		<param-value>js,css,jpg,jpeg,gif,png,bmp,html</param-value>
+    	</init-param>
+	    <init-param>
+	      	<param-name>singleSession</param-name>
+	      	<param-value>true</param-value>
+	    </init-param>    	
+	</filter>
+	
+	<!-- 验证码图片  -->
+	<filter>
+    <filter-name>dodoCaptchaFilter</filter-name>
+   	 	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    	<init-param>
+      		<param-name>targetFilterLifecycle</param-name>
+      		<param-value>true</param-value>
+    	</init-param>
+  	</filter>
+  	
+  	<filter-mapping>
+    	<filter-name>dodoCaptchaFilter</filter-name>
+   		 <url-pattern>/captcha.img</url-pattern>
+  	</filter-mapping>
+  	
+  	<!-- Spring 安全框架 -->
+  	<filter>
+    	<filter-name>springSecurityFilterChain</filter-name>
+    	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  	</filter>
+  	
+  	<filter-mapping>
+    	<filter-name>springSecurityFilterChain</filter-name>
+    	<url-pattern>*.jhtml</url-pattern>
+  	</filter-mapping>
+  	
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>*.jhtml</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>osivFilter</filter-name>
+		<url-pattern>*.jhtml</url-pattern>
+	</filter-mapping>
+	
+    <!-- front -->
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>*.dhtml</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>osivFilter</filter-name>
+		<url-pattern>*.dhtml</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>osivFilter</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>*.json</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>osivFilter</filter-name>
+		<url-pattern>*.json</url-pattern>
+	</filter-mapping>
+		
+	<!-- 后台Action  dodoBack 名字不能替换 -->
+	<servlet>
+		<servlet-name>dodoBack</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/spring-servlet-back.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+		<display-name>dodoBack</display-name>
+	</servlet>
+	
+	<!-- 前台Action dodoFront 名字不能替换 -->
+	<servlet>
+		<servlet-name>dodoFront</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/spring-servlet-front.xml</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+		<display-name>dodoFront</display-name>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>dodoBack</servlet-name>
+		<url-pattern>*.jhtml</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>dodoFront</servlet-name>
+		<url-pattern>*.dhtml</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>dodoFront</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>	
+
+	<servlet-mapping>
+		<servlet-name>dodoFront</servlet-name>
+		<url-pattern>*.json</url-pattern>
+	</servlet-mapping>	
+  	<!-- 
+  		防止上传目录被恶意注入JSP执行 仅当文件上传目录以{webroot}配置 如：
+  		dodo.io.uploader.tempfiledir={webroot}/temp_file_upload
+		dodo.io.uploader.targetfiledir={webroot}/real_file_upload
+  	-->
+  	<filter>
+  		<filter-name>disableUploadJspFilter</filter-name>
+   		<filter-class>com.dodo.common.filter.DisableUploadJspFilter</filter-class>
+ 	</filter>
+  
+	<filter-mapping>
+		<filter-name>disableUploadJspFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+		
+	<!-- 缓存配置  -->
+	<jsp-config>
+    	<taglib>
+     		 <taglib-uri>oscache</taglib-uri>
+     	 	 <taglib-location>/WEB-INF/tld/oscache.tld</taglib-location>
+   	 	</taglib>
+  	</jsp-config>
+  
+  <!-- WebAppRootListener  -->
+  <!-- 在servlet容器初始化完成后，将项目全路径放入系统变量中，代码中使用该配置获取项目根路径 -->
+    <listener>
+  	  <listener-class>com.dodo.common.framework.listener.DodoWebAppRootListener</listener-class>
+  	</listener>
+  
+   <!-- ContextLoaderListener  -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+    
+	<!-- IntrospectorCleanupListener  -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	
+	<!-- RequestContextListener  -->
+	<listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener </listener-class>
+    </listener>
+    
+    <!-- HttpSessionEventPublisher  -->
+    <listener>
+       <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+    </listener>  
+    
+    <!-- FileCleanerCleanup  -->
+    <listener>
+        <listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
+    </listener>
+    
+    <!--DodoHttpSessionListener-->
+    <listener>
+        <listener-class>com.dodo.privilege.listener.DodoHttpSessionListener</listener-class>
+    </listener>
+    	
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+	
+	<welcome-file-list>	
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.dhtml</welcome-file>
+	</welcome-file-list>
+	
+	<error-page>
+	    <exception-type>java.lang.Throwable</exception-type>
+	    <location>/html/error_page.html</location>
+	</error-page>
+	<error-page>
+	<error-code>500</error-code>
+	    <location>/html/error_page_500.html</location>
+	  </error-page>
+	<error-page>
+	    <error-code>404</error-code>
+	    <location>/html/error_page_404.html</location>
+	</error-page>
+	<error-page>
+	    <error-code>403</error-code>
+	    <location>/html/error_page_403.html</location>
+	</error-page> 
+	
+	<security-constraint>
+		<web-resource-collection>
+          <web-resource-name>Disable the unsafe HTTP methods</web-resource-name>
+          <url-pattern>/*</url-pattern>
+          <http-method>DELETE</http-method>
+          <http-method>PUT</http-method>
+          <http-method>TRACE</http-method>
+          <http-method>OPTIONS</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>EncryptionPermissions</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>     
+	<login-config>    
+		<auth-method>BASIC</auth-method>    
+	</login-config>   
+	
+    <mime-mapping>
+        <extension>zip</extension>
+        <mime-type>application/zip</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xls</extension>
+        <mime-type>application/vnd.ms-excel</mime-type>
+    </mime-mapping>
+    <mime-mapping> 
+        <extension>rar</extension> 
+        <mime-type>application/octet-stream</mime-type> 
+    </mime-mapping>	
+</web-app> 

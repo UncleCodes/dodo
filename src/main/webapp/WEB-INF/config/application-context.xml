@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	default-lazy-init="false">
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/classes/dodo_framework_config.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<context:annotation-config />
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<context:component-scan base-package="com" >
+		<context:exclude-filter type="regex" expression="com.*.action.*.*"/>
+	</context:component-scan>
+	
+	<bean id="dataSource" class="com.dodo.common.database.datasource.DodoDruidDataSource">
+	    <!-- 基本属性 url、user、password -->
+	    <property name="url" value="jdbc:mysql://127.0.0.1:3306/dodo_db?useUnicode=true&amp;characterEncoding=utf-8&amp;createDatabaseIfNotExist=true&amp;serverTimezone=Asia/Shanghai" />
+	    <property name="username" value="root" />
+	    <property name="password" value="123456" />
+	      
+	    <!-- 配置初始化大小、最小、最大 -->
+	    <property name="initialSize" value="1" />
+	    <property name="minIdle" value="1" />
+	    <property name="maxActive" value="20" />
+	 
+	    <!-- 配置获取连接等待超时的时间 -->
+	    <property name="maxWait" value="60000" />
+	 
+	    <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+	    <property name="timeBetweenEvictionRunsMillis" value="60000" />
+	 
+	    <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+	    <property name="minEvictableIdleTimeMillis" value="300000" />
+	  
+	    <property name="validationQuery" value="SELECT 'x'" />
+	    <property name="testWhileIdle" value="true" />
+	    <property name="testOnBorrow" value="false" />
+	    <property name="testOnReturn" value="false" />
+	 
+	    <!-- 打开PSCache，并且指定每个连接上PSCache的大小
+	    <property name="poolPreparedStatements" value="false" />
+	    <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+	  -->
+	    <!-- 配置监控统计拦截的filters -->
+	    <property name="proxyFilters">
+		   <list>
+		    <ref bean="log-filter" />
+		    <ref bean="stat-filter" />
+		   </list>
+		  </property>
+	    <property name="defaultAutoCommit" value="false"></property>
+	</bean>
+	<bean id="log-filter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
+		<property name="dataSourceLogEnabled" value="false"/>
+		<property name="connectionLogEnabled" value="false"/>
+		<property name="connectionLogErrorEnabled" value="true"/>
+		<property name="statementLogEnabled" value="true"/>
+		<property name="statementLogErrorEnabled" value="true"/>
+		<property name="resultSetLogEnabled" value="false"/>
+		<property name="resultSetLogErrorEnabled" value="false"/>
+ 	</bean>
+	<bean id="stat-filter" class="com.dodo.common.druid.StatFilter">
+	    <property name="slowSqlMillis" value="${dodo.slowsql.judge.mills}" />
+	    <property name="logSlowSql" value="true" />
+	    <property name="mergeSql" value="true" />
+	    <property name="taskExecutor" ref="taskExecutor"/>
+	</bean> 	
+	<!-- 多数据源配置 -->
+	<bean id="multiDataSource" class="com.dodo.common.database.datasource.MultiDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry key="defaultDataSource" value-ref="dataSource" />
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSource" />
+	</bean>
+ 
+	<bean id="physicalNamingStrategy" class="com.dodo.common.database.DodoPhysicalNamingStrategy">
+		<property name="tablePrefix" value="${dodo.database.namingstrategy.tablePrefix}" />
+    </bean>	
+    
+	<bean id="implicitNamingStrategy" class="com.dodo.common.database.DodoImplicitNamingStrategy">
+    </bean>	
+
+	<bean id="databaseNameConverterHibernate" class="com.dodo.common.database.naming.DatabaseNameConverterHibernate5">
+		<property name="physicalNamingStrategy" ref="physicalNamingStrategy" />
+    </bean>	
+    
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="multiDataSource" />
+	</bean>
+	
+	<bean id="entityInterceptor" class="com.dodo.common.framework.interceptor.EntityInterceptor" />
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="multiDataSource" />
+		<property name="packagesToScan">
+			<list>
+		        <value>com.dodo.privilege.entity</value>
+		        <value>com.*.entity</value>
+		    </list>	
+		</property>
+		<!-- 
+		<property name="eventListeners">
+			<map>
+				<entry key="post-commit-insert">
+					<ref bean="entityPostInsertEventListener" />
+				</entry>
+				<entry key="post-update">
+					<ref bean="entityPostUpdateEventListener" />
+				</entry>
+				<entry key="post-delete">
+					<ref bean="entityPostDeleteEventListener" />
+				</entry>
+			</map>
+		</property>
+		-->
+		<property name="implicitNamingStrategy" ref="implicitNamingStrategy" />
+		<property name="physicalNamingStrategy" ref="physicalNamingStrategy" />
+		<!--
+		useless  ： hibernate.dialect.storage_engine=innodb  
+		
+		The storage engine must be provided as a JVM environement variable or System property.
+		
+		String storageEngine = Environment.getProperties().getProperty( Environment.STORAGE_ENGINE );
+		if ( storageEngine == null ) {
+			this.storageEngine = getDefaultMySQLStorageEngine();
+		}
+		-->
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.MySQL55Dialect
+				hibernate.hbm2ddl.auto=validate
+				hibernate.show_sql=false
+				hibernate.format_sql=false
+				hibernate.cache.use_second_level_cache=false
+				hibernate.cache.use_query_cache=false
+				hibernate.jdbc.fetch_size=50
+				hibernate.jdbc.batch_size=30
+			</value>
+		</property>
+		<property name="entityInterceptor" ref="entityInterceptor" />
+	</bean>
+	
+	<bean id="springUtil" class="com.dodo.utils.SpringUtil" lazy-init="false" />
+	
+	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${dodo.mailsender.smtpHost}" />
+		<property name="password" value="${dodo.mailsender.smtpPassword}" />
+		<property name="port" value="${dodo.mailsender.smtpPort}" />
+		<property name="username" value="${dodo.mailsender.smtpUsername}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.timeout">25000</prop>
+				<!--
+				<prop key="mail.smtp.starttls.enable">true</prop>  
+				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+				-->
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Spring线程池执行异步操作 如：SMTP邮件异步发送 ，DOC转换，视频转换等 -->
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- 核心线程数 -->
+		<property name="corePoolSize" value="5" />
+		<!-- 最大线程数 -->
+		<property name="maxPoolSize" value="50" />
+		<!-- 最大队列数 -->
+		<property name="queueCapacity" value="1000" />
+		<!-- 线程池维护线程所允许的空闲时间 -->
+		<property name="keepAliveSeconds" value="60" />
+	</bean>
+	
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
+	
+	<bean id="txProxyTemplate" abstract="true" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="query*">PROPAGATION_SUPPORTS,readOnly</prop>
+				<prop key="get*">PROPAGATION_SUPPORTS,readOnly</prop>
+				<prop key="load*">PROPAGATION_SUPPORTS,readOnly</prop>
+				<prop key="fetch*">PROPAGATION_SUPPORTS,readOnly</prop>
+				<prop key="flush*">PROPAGATION_SUPPORTS,readOnly</prop>
+				<prop key="evict*">PROPAGATION_SUPPORTS,readOnly</prop>
+				<prop key="clear*">PROPAGATION_SUPPORTS,readOnly</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="baseJdbcDaoImpl" class="com.dodo.common.framework.dao.impl.BaseJdbcDaoImpl" >
+		<property name="jdbcTemplate" ref="jdbcTemplate"/>
+	</bean>
+	
+	<bean id="jdbcServiceImpl" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.dodo.common.framework.service.impl.JdbcServiceImpl">
+				<property name="jdbcDao" ref="baseJdbcDaoImpl"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="hqlHelperDaoImpl" class="com.dodo.common.framework.dao.impl.HqlHelperDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="hqlHelperServiceImpl" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.dodo.common.framework.service.impl.HqlHelperServiceImpl">
+				<property name="helperDao" ref="hqlHelperDaoImpl"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="sqlReportServiceImpl" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.dodo.common.framework.service.impl.SqlReportServiceImpl">
+				<property name="helperDao" ref="hqlHelperDaoImpl"/>
+			</bean>
+		</property>
+	</bean>
+	 
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="dataSource" ref="multiDataSource" />
+	</bean>
+	
+	<bean id="captchaService" class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService">
+		<property name="captchaEngine">
+			<bean class="com.dodo.common.captcha.octo.JCaptchaEngine" init-method="init">
+				<property name="minAcceptedWordLength" value="4"/>
+				<property name="maxAcceptedWordLength" value="6"/>
+				<property name="acceptedChars" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
+			</bean>
+		</property>
+		<property name="minGuarantedStorageDelayInSeconds" value="600" />
+	</bean>
+	
+	<bean id="initializableJobExecListener" class="com.dodo.privilege.job.jobexec.JobExecListener" />
+	
+	<bean id="dodoCaptchaFilter" class="com.dodo.common.filter.DodoCaptchaFilter">
+		<property name="captchaService" ref="captchaService" />
+	</bean>
+
+	<!--HttpSession-->
+	<bean id="sessionProvider" class="com.dodo.utils.web.HttpSessionProvider"/>
+	<!--图片处理-->
+	<bean id="imageScale" class="com.dodo.utils.img.ImageScaleImpl" init-method="init">
+		<property name="tryMagick" value="false"/>
+	</bean>
+	
+	<bean id="mailServiceImpl" class="com.dodo.common.framework.service.impl.MailServiceImpl">
+		<property name="freeMarkerConfigurer" ref="freemarkerConfig"/>
+		<property name="javaMailSender" ref="javaMailSender"/>
+		<property name="taskExecutor" ref="taskExecutor"/>
+	</bean>
+	
+	<!-- Freemarker -->
+	<bean id="parseVideoFileFieldDirective" class="com.dodo.common.fmk.tag.ParseVideoFileFieldDirective" />
+	<bean id="parseFileFieldDirective" class="com.dodo.common.fmk.tag.ParseFileFieldDirective" />
+	<bean id="parseLocationFieldDirective" class="com.dodo.common.fmk.tag.ParseLocationFieldDirective" />
+	<bean id="escapeHtmlMethod" class="com.dodo.common.fmk.tag.EscapeHtmlMethod" />
+	
+	<bean id="freemarkerConfig" class="com.dodo.common.fmk.DodoFreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF"/>
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="escape_html" value-ref="escapeHtmlMethod"/>
+				<entry key="parseFileField" value-ref="parseFileFieldDirective"/>
+				<entry key="parseVideoFileField" value-ref="parseVideoFileFieldDirective"/>
+				<entry key="parseLocationField" value-ref="parseLocationFieldDirective"/>
+				<entry key="hasFieldRight" value-ref="hasFieldRight"/>
+				<entry key="hasRight" value-ref="hasRight"/>
+			</map>
+		</property>
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="tag_syntax">auto_detect</prop>
+				<prop key="template_update_delay">0</prop>
+				<prop key="defaultEncoding">UTF-8</prop>
+				<prop key="url_escaping_charset">UTF-8</prop>
+				<prop key="locale">zh_CN</prop>
+				<prop key="boolean_format">true,false</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="date_format">yyyy-MM-dd</prop>
+				<prop key="time_format">HH:mm:ss</prop>
+				<prop key="number_format">0.######</prop>
+				<prop key="whitespace_stripping">true</prop>
+				<prop key="classic_compatible">true</prop>
+				<prop key="template_exception_handler">com.dodo.FreemarkerExceptionHandler</prop>
+				<prop key="auto_import">/ftl/spring.ftl as s</prop> 
+			</props>
+		</property>
+	</bean>
+</beans>

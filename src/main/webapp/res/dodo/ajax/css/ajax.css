@@ -1,0 +1,14 @@
+#lodingDiv{
+	width:210px;
+	font-size: 12px;
+	font-weight: normal;
+	text-align: left;
+	height: 32px;
+	background-position: 5px;
+	color: #2C5598;
+	line-height: 20px;
+	background-image: url(../images/blue-loading.gif);
+	background-repeat: no-repeat;
+	text-indent: 45px;
+	padding-top: 15px;
+}
