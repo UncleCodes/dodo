@@ -1,4 +1,4 @@
-# DodoFramework
+# Dodo <font color="#376BFB">Framework</font>
 
 ## 介绍
 一个基于代码生成引擎的Java Web自动化开发框架，开发效率提升90+%，后台管理系统秒级生成。10套后台管理系统模板，让你随心所欲！
