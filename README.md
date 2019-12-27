@@ -1,5 +1,10 @@
 # Dodo <font color="#376BFB">Framework</font>
 
+## 资源
+* DodoFramework 项目主站 <https://www.0yi0.com>
+* 查看在线文档 <https://doc.0yi0.com>
+* 组织在这里（QQ①群）：678785173
+
 ## 介绍
 一个基于代码生成引擎的Java Web自动化开发框架，开发效率提升90+%，后台管理系统秒级生成。10套后台管理系统模板，让你随心所欲！
 
@@ -149,8 +154,3 @@ HQLHelper：链式编写HQL查询语句，无需了解HQL知识；另外支持JD
 * 但是将Dodo本身（包括以任何形式的修改）作为一个工具或者开发平台、框架而从事商业活动，是不被授权允许的。Dodo保留运用法律手段的权利。
 * **软著登记号：2019SR0331113**
 
-
-## More
-* DodoFramework 项目主站 <https://www.0yi0.com>
-* 查看在线文档 <https://doc.0yi0.com>
-* 组织在这里（QQ①群）：678785173
