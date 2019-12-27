@@ -14,6 +14,13 @@
 
 **（2）省下更多的时间，可以：学别的...干别的...随你。**
 
+**<font color="blue">适合场景：</font>**
+
+**<font color="blue">中小型Java Web系统、APP或者小程序的后台管理系统，基本上生成无须或者很少改动。</font>**
+
+**<font color="blue">让精力更加focus在业务逻辑上</font>**
+
+**<font color="blue">目前10套模板，作为后台管理系统来说，够用了；现代化的第十一套模板还在开发中，最近比较忙，发布时间还不能确定。</font>**
 
 ## Get Started
 ### 第一步：POJO 实体类注解
