@@ -2,7 +2,7 @@
 
 ## 资源
 * DodoFramework 项目主站 <https://www.0yi0.com>
-* 查看在线文档 <https://doc.0yi0.com>
+* 查看在线文档 <https://www.0yi0.com/doc/>
 * 组织在这里（QQ①群）：678785173
 
 ## 介绍
