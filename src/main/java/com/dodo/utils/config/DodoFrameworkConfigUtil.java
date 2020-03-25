@@ -1,8 +1,7 @@
 package com.dodo.utils.config;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.FileInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,25 +52,23 @@ public final class DodoFrameworkConfigUtil {
     static {
         ps = new Properties();
         try {
-            ps.load(DodoFrameworkConfigUtil.class.getClassLoader().getResourceAsStream(
-                    "dodo_framework_config.properties"));
-        } catch (IOException e) {
+            File parentFile = new File(DodoFrameworkConfigUtil.class.getClassLoader().getResource("").toURI());
+            File confFile = new File(parentFile, "dodo_framework_config.properties");
+
+            if (confFile.exists()) {
+                try (FileInputStream inStream = new FileInputStream(confFile)) {
+                    ps.load(inStream);
+                }
+            } else {
+                // idea IDE dev mode
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public static void setProperty(String key, String value) {
         ps.setProperty(key, value);
-    }
-
-    public static void store() {
-        try {
-            ps.store(
-                    new FileOutputStream(new File(DodoFrameworkConfigUtil.class.getClassLoader()
-                            .getResource("dodo_framework_config.properties").toURI())), "Dodo Config Store");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public static String get(String key) {

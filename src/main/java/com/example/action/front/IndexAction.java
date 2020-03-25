@@ -3,10 +3,12 @@ package com.example.action.front;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dodo.common.framework.service.HqlHelperService;
 import com.example.enums.DemoEnum;
 import com.example.enums.PersonKind;
 
@@ -21,6 +23,19 @@ import com.example.enums.PersonKind;
  */
 @Controller
 public class IndexAction {
+
+    @Autowired
+    private HqlHelperService helperService;
+
+    // 一个例子，查询省份名称包含'天'的省份，并且返回名字 和 id
+    //    @RequestMapping({ "/mydata.json" })
+    //    @ResponseBody
+    //    public List<Map<String, Object>> mydata() {
+    //        HqlHelper helper = HqlHelper.queryFrom(Province.class);
+    //        helper.fetch(ProvinceFields.name).fetch(ProvinceFields.id).like(ProvinceFields.name, "天");
+    //        return helperService.getRecords(helper, Boolean.FALSE).getRawData();
+    //    }
+
     @RequestMapping({ "/index.htm", "/index.dhtml" })
     public String index() {
         return "test_index";
