@@ -6,22 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 
-import com.dodo.common.annotation.DodoCodeGenerator;
 import com.dodo.common.annotation.action.DodoAction;
-import com.dodo.common.annotation.action.DodoActionGenerator;
-import com.dodo.common.annotation.dao.DodoDaoGenerator;
+import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenuLevel;
+import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.right.DodoButtonRight;
 import com.dodo.common.annotation.right.DodoButtonRightEvent;
 import com.dodo.common.annotation.right.DodoButtonRightModel;
-import com.dodo.common.annotation.right.DodoRight;
-import com.dodo.common.annotation.service.DodoSrvGenerator;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.privilege.entity.admin_1.base_1.Admin;
 import com.dodo.privilege.entity.monitor_2.log_1.LoginLog;
@@ -37,13 +31,9 @@ import com.dodo.privilege.entity.monitor_2.log_1.LoginLog;
  */
 @Entity
 @DynamicInsert
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", level = DodoMenuLevel.LEVEL1, sortSeq = 2)
-@DodoMenu(nameKey = "dodo.privilege.monitor.active.menuNameKey", level = DodoMenuLevel.LEVEL2, sortSeq = 2)
-@DodoMenu(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.menuNameKey", level = DodoMenuLevel.LEVEL3, sortSeq = 1)
-@DodoRight(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.entityKey")
-@DodoCodeGenerator(daoGenerator = @DodoDaoGenerator, srvGenerator = @DodoSrvGenerator, actGenerator = @DodoActionGenerator(actions = {
-        DodoAction.VIEW, DodoAction.CHART, DodoAction.EXPORT }))
+@DodoEntity(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.entityKey", actions = { DodoAction.VIEW,
+        DodoAction.CHART, DodoAction.EXPORT })
+@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2), levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.active.menuNameKey", sortSeq = 2), levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.menuNameKey", sortSeq = 1))
 @DodoButtonRight(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.button.killone.namekey", model = DodoButtonRightModel.ROW, path = "/killone", event = DodoButtonRightEvent.AJAX)
 @DodoButtonRight(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.button.killall.namekey", model = DodoButtonRightModel.MODEL, path = "/killall", event = DodoButtonRightEvent.AJAX)
 public class BackSessionInfo extends BaseEntity implements java.io.Serializable {

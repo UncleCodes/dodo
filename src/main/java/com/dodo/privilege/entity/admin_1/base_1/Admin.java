@@ -13,23 +13,17 @@ import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.springframework.security.core.GrantedAuthority;
 
-import com.dodo.common.annotation.DodoCodeGenerator;
 import com.dodo.common.annotation.action.DodoAction;
-import com.dodo.common.annotation.action.DodoActionGenerator;
-import com.dodo.common.annotation.dao.DodoDaoGenerator;
+import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.field.DodoViewGroup;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenuLevel;
-import com.dodo.common.annotation.right.DodoRight;
+import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.right.DodoRowRight;
-import com.dodo.common.annotation.service.DodoSrvGenerator;
 import com.dodo.common.framework.bean.tree.DodoTree;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.security.DodoUserDetails;
@@ -45,12 +39,8 @@ import com.dodo.security.DodoUserDetails;
  */
 @Entity
 @DynamicInsert
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", level = DodoMenuLevel.LEVEL1, sortSeq = 1)
-@DodoMenu(nameKey = "dodo.privilege.admin.base.menuNameKey", level = DodoMenuLevel.LEVEL2, sortSeq = 1)
-@DodoMenu(nameKey = "dodo.privilege.admin.base.Admin.menuNameKey", level = DodoMenuLevel.LEVEL3, sortSeq = 1)
-@DodoRight(nameKey = "dodo.privilege.admin.base.Admin.entityKey")
-@DodoCodeGenerator(daoGenerator = @DodoDaoGenerator, srvGenerator = @DodoSrvGenerator, actGenerator = @DodoActionGenerator(actions = { DodoAction.ALL }))
+@DodoEntity(nameKey = "dodo.privilege.admin.base.Admin.entityKey", actions = { DodoAction.ALL })
+@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.base.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.base.Admin.menuNameKey", sortSeq = 1))
 @DodoRowRight(entityProperty = "addBy")
 public class Admin extends BaseEntity implements DodoUserDetails {
     private static final long            serialVersionUID = -7519486823153844426L;

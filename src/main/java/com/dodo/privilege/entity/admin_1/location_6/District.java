@@ -6,22 +6,16 @@ import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 
-import com.dodo.common.annotation.DodoCodeGenerator;
 import com.dodo.common.annotation.action.DodoAction;
-import com.dodo.common.annotation.action.DodoActionGenerator;
-import com.dodo.common.annotation.dao.DodoDaoGenerator;
+import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoFileType;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.field.FileStyle;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenuLevel;
-import com.dodo.common.annotation.right.DodoRight;
-import com.dodo.common.annotation.service.DodoSrvGenerator;
+import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.tree.DodoTreeRef;
 import com.dodo.common.framework.entity.BaseEntity;
 
@@ -36,12 +30,8 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", level = DodoMenuLevel.LEVEL1, sortSeq = 1)
-@DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", level = DodoMenuLevel.LEVEL2, sortSeq = 6)
-@DodoMenu(nameKey = "dodo.privilege.admin.location.District.menuNameKey", level = DodoMenuLevel.LEVEL3, sortSeq = 4)
-@DodoRight(nameKey = "dodo.privilege.admin.location.District.entityKey")
-@DodoCodeGenerator(daoGenerator = @DodoDaoGenerator, srvGenerator = @DodoSrvGenerator, actGenerator = @DodoActionGenerator(actions = { DodoAction.ALL }))
+@DodoEntity(nameKey = "dodo.privilege.admin.location.District.entityKey", actions = { DodoAction.ALL })
+@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.District.menuNameKey", sortSeq = 4))
 @DodoTreeRef(mapParentField = "city", selfQueryParams = "eq(\"inUse\",true);")
 public class District extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -3479293736348006559L;

@@ -17,20 +17,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.dodo.common.annotation.ClientLanguage;
-import com.dodo.common.annotation.DodoCodeGenerator;
-import com.dodo.common.annotation.action.DodoActionGenerator;
 import com.dodo.common.annotation.action.DodoActionType;
-import com.dodo.common.annotation.dao.DodoDaoGenerator;
+import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.menu.DodoMenu;
 import com.dodo.common.annotation.menu.DodoMenuLevel;
 import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.right.DodoButtonRight;
 import com.dodo.common.annotation.right.DodoButtonRightEvent;
 import com.dodo.common.annotation.right.DodoButtonRights;
-import com.dodo.common.annotation.right.DodoRight;
 import com.dodo.common.annotation.right.DodoRowRight;
 import com.dodo.common.annotation.right.DodoRowRights;
-import com.dodo.common.annotation.service.DodoSrvGenerator;
 import com.dodo.common.annotation.tree.DodoTreeRef;
 import com.dodo.common.enums.EnumInterface;
 import com.dodo.generate.config.DodoAction2DodoActionTypes;
@@ -122,14 +118,16 @@ class MakeBaseDataUtil {
             query.setParameter("menuName", menu.name());
             menuName = menu.name();
         }
-
-        MenuInfo menuInfo = (MenuInfo) query.setParameter("menuLevel", menu.level())
+        DodoMenuLevel[] allLevels = { DodoMenuLevel.LEVEL0, DodoMenuLevel.LEVEL1, DodoMenuLevel.LEVEL2,
+                DodoMenuLevel.LEVEL3 };
+        DodoMenuLevel currLevel = allLevels[parentmMenuInfo.getMenuLevel().getSeq()];
+        MenuInfo menuInfo = (MenuInfo) query.setParameter("menuLevel", currLevel)
                 .setParameter("parentMenuInfo", parentmMenuInfo).uniqueResult();
         if (menuInfo == null) {
             menuChange.add(Boolean.TRUE);
             menuInfo = new MenuInfo();
             menuInfo.setMenuCode(menuCode + "");
-            menuInfo.setMenuLevel(menu.level());
+            menuInfo.setMenuLevel(currLevel);
             menuInfo.setMenuLink(menuLink);
             if (StringUtils.isNotBlank(menu.nameKey())) {
                 menuInfo.setMenuNameKey(menu.nameKey());
@@ -151,7 +149,7 @@ class MakeBaseDataUtil {
             menuChange.add(Boolean.FALSE);
             LOGGER.info(menuName + " is exists.. ");
         }
-        return (MenuInfo) query.setParameter("menuLevel", menu.level()).setParameter("parentMenuInfo", parentmMenuInfo)
+        return (MenuInfo) query.setParameter("menuLevel", currLevel).setParameter("parentMenuInfo", parentmMenuInfo)
                 .uniqueResult();
     }
 
@@ -176,7 +174,7 @@ class MakeBaseDataUtil {
     }
 
     private static int initDodoButtonRights(Class<?> clazz, MenuInfo rootMenu, String basepath, Session session,
-            MenuInfo menuInfoThree, DodoRight dodoRight, int rightCode) {
+            MenuInfo menuInfoThree, DodoEntity dodoEntity, int rightCode) {
         int rightCodeLocal = rightCode;
 
         DodoButtonRight[] buttonRights = null;
@@ -228,10 +226,10 @@ class MakeBaseDataUtil {
                     } else {
                         rightButton.setRightName(buttonRight.name());
                     }
-                    if (StringUtils.isNotBlank(dodoRight.nameKey())) {
-                        rightButton.setEntityKey(dodoRight.nameKey());
+                    if (StringUtils.isNotBlank(dodoEntity.nameKey())) {
+                        rightButton.setEntityKey(dodoEntity.nameKey());
                     } else {
-                        rightButton.setEntityName(dodoRight.name());
+                        rightButton.setEntityName(dodoEntity.name());
                     }
                     rightButton.setSortSeq(0);
                     session.save(rightButton);
@@ -251,10 +249,10 @@ class MakeBaseDataUtil {
                     } else {
                         rightButton.setRightName(buttonRight.name());
                     }
-                    if (StringUtils.isNotBlank(dodoRight.nameKey())) {
-                        rightButton.setEntityKey(dodoRight.nameKey());
+                    if (StringUtils.isNotBlank(dodoEntity.nameKey())) {
+                        rightButton.setEntityKey(dodoEntity.nameKey());
                     } else {
-                        rightButton.setEntityName(dodoRight.name());
+                        rightButton.setEntityName(dodoEntity.name());
                     }
                     rightButton.setSortSeq(0);
                     session.update(rightButton);
@@ -273,7 +271,7 @@ class MakeBaseDataUtil {
 
     private static int initCommonRights(Class<?> clazz, List<DodoActionType> myTypes, MenuInfo rootMenu,
             String basepath, Session session, ClientLanguage clientLanguage, MenuInfo menuInfoThree, int rightCode,
-            MenuInfo menuInfoOne, DodoRight dodoRight) {
+            MenuInfo menuInfoOne, DodoEntity dodoEntity) {
         int rightCodeLocal = rightCode;
         DodoActionType[] allActTypes = DodoActionType.values();
         Right currManagerRight = null;
@@ -308,12 +306,12 @@ class MakeBaseDataUtil {
                 if (!type.getIsManager()) {
                     right0.setManagerRight(currManagerRight);
                 }
-                if (StringUtils.isNotBlank(dodoRight.nameKey())) {
-                    right0.setEntityKey(dodoRight.nameKey());
+                if (StringUtils.isNotBlank(dodoEntity.nameKey())) {
+                    right0.setEntityKey(dodoEntity.nameKey());
                 } else {
-                    right0.setEntityName(dodoRight.name());
+                    right0.setEntityName(dodoEntity.name());
                 }
-                right0.setRightRemark(dodoRight.remark());
+                right0.setRightRemark(dodoEntity.remark());
                 right0.setSortSeq(0);
                 session.save(right0);
 
@@ -340,40 +338,30 @@ class MakeBaseDataUtil {
     }
 
     private static com.dodo.privilege.entity.admin_1.config_5.Entity initEntityInfo(Session session, String basepath,
-            Class<?> clazz, MenuInfo menuInfoOne, MenuInfo menuInfoTwo, MenuInfo menuInfoThree, DodoRight dodoRight,
-            DodoActionGenerator actGenerator, DodoDaoGenerator daoGenerator, DodoSrvGenerator srvGenerator) {
+            Class<?> clazz, MenuInfo menuInfoOne, MenuInfo menuInfoTwo, MenuInfo menuInfoThree, DodoEntity dodoEntity) {
         com.dodo.privilege.entity.admin_1.config_5.Entity entity = (com.dodo.privilege.entity.admin_1.config_5.Entity) session
                 .createQuery("from Entity r where r.className=:className").setParameter("className", clazz.getName())
                 .uniqueResult();
         if (entity == null) {
             entity = new com.dodo.privilege.entity.admin_1.config_5.Entity();
-            entity.setActionName(DodoGenerateCodeUtil.actionBasePackage
-                    + HibernateConfigUtil.getShortPackage(clazz)
-                    + "."
-                    + (StringUtils.isBlank(actGenerator.baseName()) ? clazz.getSimpleName() + "Action" : StringUtils
-                            .capitalize(actGenerator.baseName()) + "Action"));
-            entity.setActionType(DodoAction2DodoActionTypes.transfer(actGenerator.actions()).toString());
+            entity.setActionName(DodoGenerateCodeUtil.actionBasePackage + HibernateConfigUtil.getShortPackage(clazz)
+                    + "." + clazz.getSimpleName() + "Action");
+            entity.setActionType(DodoAction2DodoActionTypes.transfer(dodoEntity.actions()).toString());
             entity.setBasePath(basepath);
             entity.setClassName(clazz.getName());
             entity.setCreateDate(new Date());
-            entity.setDaoName(DodoGenerateCodeUtil.daoBasePackage
-                    + HibernateConfigUtil.getShortPackage(clazz)
-                    + "."
-                    + (StringUtils.isBlank(daoGenerator.baseName()) ? clazz.getSimpleName() + "Dao" : StringUtils
-                            .capitalize(daoGenerator.baseName()) + "Dao"));
+            entity.setDaoName(DodoGenerateCodeUtil.daoBasePackage + HibernateConfigUtil.getShortPackage(clazz) + "."
+                    + clazz.getSimpleName() + "Dao");
             entity.setMenuInfoPath(menuInfoOne.getMenuName() + "-" + menuInfoTwo.getMenuName() + "-"
                     + menuInfoThree.getMenuName());
             entity.setModifyDate(new Date());
-            if (StringUtils.isNotBlank(dodoRight.nameKey())) {
-                entity.setShowKey(dodoRight.nameKey());
+            if (StringUtils.isNotBlank(dodoEntity.nameKey())) {
+                entity.setShowKey(dodoEntity.nameKey());
             } else {
-                entity.setName(dodoRight.name());
+                entity.setName(dodoEntity.name());
             }
-            entity.setServiceName(DodoGenerateCodeUtil.serviceBasePackage
-                    + HibernateConfigUtil.getShortPackage(clazz)
-                    + "."
-                    + (StringUtils.isBlank(srvGenerator.baseName()) ? clazz.getSimpleName() + "Service" : StringUtils
-                            .capitalize(srvGenerator.baseName()) + "Service"));
+            entity.setServiceName(DodoGenerateCodeUtil.serviceBasePackage + HibernateConfigUtil.getShortPackage(clazz)
+                    + "." + clazz.getSimpleName() + "Service");
             entity.setSortSeq(0);
             entity.setMenuInfo(menuInfoThree);
 
@@ -512,7 +500,7 @@ class MakeBaseDataUtil {
     private static void initExtendModel(List<Class<?>> classList, Session session) throws SecurityException,
             NoSuchFieldException {
         for (Class<?> clazz : classList) {
-            if ((!clazz.isAnnotationPresent(DodoMenus.class)) || (!clazz.isAnnotationPresent(DodoRight.class))) {
+            if ((!clazz.isAnnotationPresent(DodoMenus.class)) || (!clazz.isAnnotationPresent(DodoEntity.class))) {
                 continue;
             }
 
@@ -685,45 +673,23 @@ class MakeBaseDataUtil {
                         clientLanguage = null;
                     }
                 }
-
-                DodoMenu[] menuItems = null;
+                DodoMenus dodoMenus = null;
                 if (clazz.isAnnotationPresent(DodoMenus.class)) {
-                    DodoMenus dodoMenus = clazz.getAnnotation(DodoMenus.class);
-                    menuItems = dodoMenus.value();
-                } else if (clazz.isAnnotationPresent(DodoMenu.class)) {
-                    menuItems = new DodoMenu[] { clazz.getAnnotation(DodoMenu.class) };
-                }
-
-                if (menuItems == null) {
-                    continue;
-                }
-
-                DodoRight dodoRight = null;
-                if (clazz.isAnnotationPresent(DodoRight.class)) {
-                    dodoRight = clazz.getAnnotation(DodoRight.class);
+                    dodoMenus = clazz.getAnnotation(DodoMenus.class);
                 } else {
                     continue;
                 }
 
-                DodoMenu menuOne = null;
-                DodoMenu menuTwo = null;
-                DodoMenu menuThree = null;
-                for (DodoMenu menu : menuItems) {
-                    if (menu.level() == DodoMenuLevel.LEVEL1) {
-                        menuOne = menu;
-                    } else if (menu.level() == DodoMenuLevel.LEVEL2) {
-                        menuTwo = menu;
-                    } else if (menu.level() == DodoMenuLevel.LEVEL3) {
-                        menuThree = menu;
-                    }
+                DodoEntity dodoEntity = null;
+                if (clazz.isAnnotationPresent(DodoEntity.class)) {
+                    dodoEntity = clazz.getAnnotation(DodoEntity.class);
+                } else {
+                    continue;
                 }
 
-                if (menuOne == null || menuTwo == null || menuThree == null) {
-                    LOGGER.info("Configuration Fail!");
-                    transaction.rollback();
-                    session.close();
-                    System.exit(0);
-                }
+                DodoMenu menuOne = dodoMenus.levelOne();
+                DodoMenu menuTwo = dodoMenus.levelTwo();
+                DodoMenu menuThree = dodoMenus.levelThree();
 
                 MenuInfo menuInfoOne = saveMenu(session, menuOne, ++levelOne, rootMenu.getMenuLink()
                         + "/framemenu/left_{0}.jhtml", rootMenu);
@@ -739,29 +705,24 @@ class MakeBaseDataUtil {
                     --levelThree;
                 }
 
-                DodoCodeGenerator codeGenerator = clazz.getAnnotation(DodoCodeGenerator.class);
-                DodoDaoGenerator daoGenerator = codeGenerator.daoGenerator();
-                DodoSrvGenerator srvGenerator = codeGenerator.srvGenerator();
-                DodoActionGenerator actGenerator = codeGenerator.actGenerator();
                 List<DodoActionType> myTypes = new ArrayList<DodoActionType>();
-                Set<DodoActionType> configTypes = DodoAction2DodoActionTypes.transfer(actGenerator.actions());
+                Set<DodoActionType> configTypes = DodoAction2DodoActionTypes.transfer(dodoEntity.actions());
                 for (DodoActionType type : configTypes) {
                     myTypes.add(type);
                 }
-                String basepath = (StringUtils.isBlank(dodoRight.path()) ? "/" + clazz.getSimpleName().toLowerCase()
-                        : (("/" + dodoRight.path()).replaceAll("[/]{2,}", "/")));
+                String basepath = "/" + clazz.getSimpleName().toLowerCase();
                 basepath = (basepath.endsWith("/") ? basepath.substring(0, basepath.length() - 1) : basepath);
                 //button right
-                rightCode = initDodoButtonRights(clazz, rootMenu, basepath, session, menuInfoThree, dodoRight,
+                rightCode = initDodoButtonRights(clazz, rootMenu, basepath, session, menuInfoThree, dodoEntity,
                         rightCode);
 
                 // common right
                 rightCode = initCommonRights(clazz, myTypes, rootMenu, basepath, session, clientLanguage,
-                        menuInfoThree, rightCode, menuInfoOne, dodoRight);
+                        menuInfoThree, rightCode, menuInfoOne, dodoEntity);
 
                 // make entity data
                 com.dodo.privilege.entity.admin_1.config_5.Entity entity = initEntityInfo(session, basepath, clazz,
-                        menuInfoOne, menuInfoTwo, menuInfoThree, dodoRight, actGenerator, daoGenerator, srvGenerator);
+                        menuInfoOne, menuInfoTwo, menuInfoThree, dodoEntity);
 
                 // field 
                 fieldRightCode = initFields(hibernateConfigUtil, clazz, session, entity, myTypes, fieldRightCode);

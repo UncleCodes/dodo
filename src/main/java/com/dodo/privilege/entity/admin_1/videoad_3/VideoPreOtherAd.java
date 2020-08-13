@@ -6,21 +6,15 @@ import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 
-import com.dodo.common.annotation.DodoCodeGenerator;
 import com.dodo.common.annotation.action.DodoAction;
-import com.dodo.common.annotation.action.DodoActionGenerator;
-import com.dodo.common.annotation.dao.DodoDaoGenerator;
+import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoFileType;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenuLevel;
-import com.dodo.common.annotation.right.DodoRight;
-import com.dodo.common.annotation.service.DodoSrvGenerator;
+import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.privilege.enums.VideoCountDownsPosition;
 
@@ -35,12 +29,8 @@ import com.dodo.privilege.enums.VideoCountDownsPosition;
  */
 @Entity
 @DynamicInsert
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", level = DodoMenuLevel.LEVEL1, sortSeq = 1)
-@DodoMenu(nameKey = "dodo.privilege.admin.videoad.menuNameKey", level = DodoMenuLevel.LEVEL2, sortSeq = 3)
-@DodoMenu(nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.menuNameKey", level = DodoMenuLevel.LEVEL3, sortSeq = 2)
-@DodoRight(nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.entityKey")
-@DodoCodeGenerator(daoGenerator = @DodoDaoGenerator, srvGenerator = @DodoSrvGenerator, actGenerator = @DodoActionGenerator(actions = { DodoAction.ALL }))
+@DodoEntity(nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.entityKey", actions = { DodoAction.ALL })
+@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.menuNameKey", sortSeq = 3), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.menuNameKey", sortSeq = 2))
 public class VideoPreOtherAd extends BaseEntity implements java.io.Serializable {
     private static final long       serialVersionUID = 2989790219927042165L;
 

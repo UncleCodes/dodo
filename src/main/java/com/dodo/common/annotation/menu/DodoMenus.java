@@ -23,5 +23,9 @@ import java.lang.annotation.Target;
 @Documented
 @Inherited
 public @interface DodoMenus {
-    public DodoMenu[] value() default {};
+    public DodoMenu levelOne();
+
+    public DodoMenu levelTwo();
+
+    public DodoMenu levelThree();
 }

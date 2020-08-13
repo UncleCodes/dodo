@@ -5,19 +5,14 @@ import javax.persistence.Convert;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 
-import com.dodo.common.annotation.DodoCodeGenerator;
 import com.dodo.common.annotation.action.DodoAction;
-import com.dodo.common.annotation.action.DodoActionGenerator;
-import com.dodo.common.annotation.dao.DodoDaoGenerator;
+import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenuLevel;
-import com.dodo.common.annotation.right.DodoRight;
+import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.right.DodoRowRight;
-import com.dodo.common.annotation.service.DodoSrvGenerator;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.privilege.entity.admin_1.base_1.Admin;
 import com.dodo.privilege.entity.admin_1.config_5.Entity;
@@ -34,13 +29,9 @@ import com.dodo.privilege.enums.ExcelImportStatus;
  */
 @javax.persistence.Entity
 @DynamicInsert
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", level = DodoMenuLevel.LEVEL1, sortSeq = 1)
-@DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", level = DodoMenuLevel.LEVEL2, sortSeq = 4)
-@DodoMenu(nameKey = "dodo.privilege.admin.data.ExcelImportInfo.menuNameKey", level = DodoMenuLevel.LEVEL3, sortSeq = 1)
-@DodoRight(nameKey = "dodo.privilege.admin.data.ExcelImportInfo.entityKey")
-@DodoCodeGenerator(daoGenerator = @DodoDaoGenerator, srvGenerator = @DodoSrvGenerator, actGenerator = @DodoActionGenerator(actions = {
-        DodoAction.VIEW, DodoAction.EXPORT }))
+@DodoEntity(nameKey = "dodo.privilege.admin.data.ExcelImportInfo.entityKey", actions = { DodoAction.VIEW,
+        DodoAction.EXPORT })
+@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.ExcelImportInfo.menuNameKey", sortSeq = 1))
 @DodoRowRight(entityProperty = "admin")
 public class ExcelImportInfo extends BaseEntity {
     private static final long serialVersionUID = -7421237859683639514L;
@@ -210,5 +201,11 @@ public class ExcelImportInfo extends BaseEntity {
 
     public void setSheetNote(String sheetNote) {
         this.sheetNote = sheetNote;
+    }
+
+    public static void main(String[] args) {
+        System.err.println(ExcelImportInfo.class.getSuperclass().isAnnotationPresent(javax.persistence.Entity.class));
+        System.err.println(ExcelImportInfo.class.getSuperclass().isAnnotationPresent(Cache.class));
+        System.err.println(ExcelImportInfo.class.getSuperclass().isAnnotationPresent(DynamicInsert.class));
     }
 }

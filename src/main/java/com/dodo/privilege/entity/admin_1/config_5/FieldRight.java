@@ -9,21 +9,15 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 
-import com.dodo.common.annotation.DodoCodeGenerator;
 import com.dodo.common.annotation.action.DodoAction;
-import com.dodo.common.annotation.action.DodoActionGenerator;
-import com.dodo.common.annotation.dao.DodoDaoGenerator;
+import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.field.DodoValueGenerator;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenuLevel;
-import com.dodo.common.annotation.right.DodoRight;
-import com.dodo.common.annotation.service.DodoSrvGenerator;
+import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.tree.DodoTreeRef;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.privilege.entity.admin_1.base_1.Role;
@@ -40,13 +34,9 @@ import com.dodo.privilege.enums.FieldRightType;
  */
 @Entity
 @DynamicInsert
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", level = DodoMenuLevel.LEVEL1, sortSeq = 1)
-@DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", level = DodoMenuLevel.LEVEL2, sortSeq = 5)
-@DodoMenu(nameKey = "dodo.privilege.admin.config.FieldRight.menuNameKey", level = DodoMenuLevel.LEVEL3, sortSeq = 5)
-@DodoRight(nameKey = "dodo.privilege.admin.config.FieldRight.entityKey")
-@DodoCodeGenerator(daoGenerator = @DodoDaoGenerator, srvGenerator = @DodoSrvGenerator, actGenerator = @DodoActionGenerator(actions = {
-        DodoAction.VIEW, DodoAction.EXPORT, DodoAction.CHART }))
+@DodoEntity(nameKey = "dodo.privilege.admin.config.FieldRight.entityKey", actions = { DodoAction.VIEW,
+        DodoAction.EXPORT, DodoAction.CHART })
+@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.FieldRight.menuNameKey", sortSeq = 5))
 @DodoTreeRef(mapParentField = "field")
 public class FieldRight extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 4222565985045637831L;

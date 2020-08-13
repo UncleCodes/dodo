@@ -4,19 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 
-import com.dodo.common.annotation.DodoCodeGenerator;
 import com.dodo.common.annotation.action.DodoAction;
-import com.dodo.common.annotation.action.DodoActionGenerator;
-import com.dodo.common.annotation.dao.DodoDaoGenerator;
+import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenuLevel;
-import com.dodo.common.annotation.right.DodoRight;
-import com.dodo.common.annotation.service.DodoSrvGenerator;
+import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 
 /**
@@ -30,12 +24,8 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", level = DodoMenuLevel.LEVEL1, sortSeq = 1)
-@DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", level = DodoMenuLevel.LEVEL2, sortSeq = 4)
-@DodoMenu(nameKey = "dodo.privilege.admin.data.FreeStateFile.menuNameKey", level = DodoMenuLevel.LEVEL3, sortSeq = 4)
-@DodoRight(nameKey = "dodo.privilege.admin.data.FreeStateFile.entityKey")
-@DodoCodeGenerator(daoGenerator = @DodoDaoGenerator, srvGenerator = @DodoSrvGenerator, actGenerator = @DodoActionGenerator(actions = { DodoAction.VIEW }))
+@DodoEntity(nameKey = "dodo.privilege.admin.data.FreeStateFile.entityKey", actions = { DodoAction.VIEW })
+@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.FreeStateFile.menuNameKey", sortSeq = 4))
 public class FreeStateFile extends BaseEntity {
     private static final long serialVersionUID = -4838958645030206041L;
 
