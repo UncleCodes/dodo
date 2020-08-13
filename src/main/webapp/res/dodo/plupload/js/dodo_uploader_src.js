@@ -215,7 +215,10 @@
             					.replace('${formatFileSize}', plupload.formatSize(file.size));
         };
         var getVideoItemTpl = function (file) {
-            return videoItemTpl.replace(/\$\{fileId\}/g, file.id);
+        	/**
+        	 * return videoItemTpl.replace(/\$\{fileId\}/g, file.id);
+        	 */       	
+        	return "";
         };
         uploader.bind('FilesRemoved', function (up, files) {
             if (files.length === uploader.total.queued) {

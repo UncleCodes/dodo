@@ -665,7 +665,6 @@ class MakeBaseDataUtil {
 
             for (Class<?> clazz : hibernateConfigUtil.getEntityClassList()) {
                 LOGGER.info(clazz + " ........ Process !");
-
                 ClientLanguage clientLanguage = null;
                 if (clazz.isAnnotationPresent(ClientLanguage.class)) {
                     clientLanguage = clazz.getAnnotation(ClientLanguage.class);
@@ -685,6 +684,15 @@ class MakeBaseDataUtil {
                     dodoEntity = clazz.getAnnotation(DodoEntity.class);
                 } else {
                     continue;
+                }
+                if (DodoGenerateCodeUtil.classVideoAfterAd.equals(clazz)
+                        || DodoGenerateCodeUtil.classVideoCornerAd.equals(clazz)
+                        || DodoGenerateCodeUtil.classVideoPauseAd.equals(clazz)
+                        || DodoGenerateCodeUtil.classVideoPreOtherAd.equals(clazz)
+                        || DodoGenerateCodeUtil.classVideoPreVideoAd.equals(clazz)) {
+                    if (!DodoGenerateCodeUtil.isShowVideoProperties) {
+                        continue;
+                    }
                 }
 
                 DodoMenu menuOne = dodoMenus.levelOne();
