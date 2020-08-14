@@ -10,7 +10,6 @@ import com.dodo.common.annotation.action.DodoAction;
 import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 
 /**
@@ -24,8 +23,7 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.data.FreeStateFile.entityKey", actions = { DodoAction.VIEW })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.FreeStateFile.menuNameKey", sortSeq = 4))
+@DodoEntity(nameKey = "dodo.privilege.admin.data.FreeStateFile.entityKey", actions = { DodoAction.VIEW }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.FreeStateFile.menuNameKey", sortSeq = 4))
 public class FreeStateFile extends BaseEntity {
     private static final long serialVersionUID = -4838958645030206041L;
 

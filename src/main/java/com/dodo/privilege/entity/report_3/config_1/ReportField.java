@@ -12,7 +12,6 @@ import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.report.ReportFieldType;
 import com.dodo.common.annotation.report.ReportQueryType;
 import com.dodo.common.framework.entity.BaseEntity;
@@ -29,8 +28,7 @@ import com.dodo.common.framework.entity.BaseEntity;
 @Entity
 @DynamicInsert
 @DodoEntity(nameKey = "dodo.privilege.report.config.ReportField.entityKey", actions = { DodoAction.VIEW,
-        DodoAction.UPDATE, DodoAction.EXPORT })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3), levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportField.menuNameKey", sortSeq = 4))
+        DodoAction.UPDATE, DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3), levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportField.menuNameKey", sortSeq = 4))
 public class ReportField extends BaseEntity {
     private static final long serialVersionUID = -4443407897694944602L;
 

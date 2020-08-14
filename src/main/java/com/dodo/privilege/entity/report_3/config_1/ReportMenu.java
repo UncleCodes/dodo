@@ -10,7 +10,6 @@ import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 
 /**
@@ -24,8 +23,7 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.report.config.ReportMenu.entityKey", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3), levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportMenu.menuNameKey", sortSeq = 1))
+@DodoEntity(nameKey = "dodo.privilege.report.config.ReportMenu.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3), levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportMenu.menuNameKey", sortSeq = 1))
 public class ReportMenu extends BaseEntity {
     private static final long serialVersionUID = 5267212173675296962L;
 

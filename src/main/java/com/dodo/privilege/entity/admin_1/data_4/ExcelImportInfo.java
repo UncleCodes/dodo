@@ -11,7 +11,6 @@ import com.dodo.common.annotation.action.DodoAction;
 import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.right.DodoRowRight;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.privilege.entity.admin_1.base_1.Admin;
@@ -30,8 +29,7 @@ import com.dodo.privilege.enums.ExcelImportStatus;
 @javax.persistence.Entity
 @DynamicInsert
 @DodoEntity(nameKey = "dodo.privilege.admin.data.ExcelImportInfo.entityKey", actions = { DodoAction.VIEW,
-        DodoAction.EXPORT })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.ExcelImportInfo.menuNameKey", sortSeq = 1))
+        DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.ExcelImportInfo.menuNameKey", sortSeq = 1))
 @DodoRowRight(entityProperty = "admin")
 public class ExcelImportInfo extends BaseEntity {
     private static final long serialVersionUID = -7421237859683639514L;

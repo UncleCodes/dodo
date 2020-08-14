@@ -12,7 +12,6 @@ import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 
 /**
@@ -27,8 +26,7 @@ import com.dodo.common.framework.entity.BaseEntity;
 @Entity
 @DynamicInsert
 @DodoEntity(nameKey = "dodo.privilege.admin.job.QuartzJob.entityKey", actions = { DodoAction.VIEW, DodoAction.CHART,
-        DodoAction.EXPORT })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.job.menuNameKey", sortSeq = 2), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.job.QuartzJob.menuNameKey", sortSeq = 1))
+        DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.job.menuNameKey", sortSeq = 2), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.job.QuartzJob.menuNameKey", sortSeq = 1))
 public class QuartzJob extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 4416453129912851423L;
 

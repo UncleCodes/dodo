@@ -22,7 +22,6 @@ import com.dodo.common.annotation.field.DodoFileType;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.field.FileStyle;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.tree.DodoTreeRef;
 import com.dodo.common.framework.entity.BaseEntity;
 
@@ -37,8 +36,7 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.location.Province.entityKey", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.Province.menuNameKey", sortSeq = 2))
+@DodoEntity(nameKey = "dodo.privilege.admin.location.Province.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.Province.menuNameKey", sortSeq = 2))
 @DodoTreeRef(mapParentField = "country", selfQueryParams = "eq(\"inUse\",true);")
 public class Province extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 3461291242143172195L;

@@ -21,7 +21,6 @@ import com.dodo.common.annotation.field.DodoFileType;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.field.FileStyle;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.tree.DodoTreeRef;
 import com.dodo.common.framework.entity.BaseEntity;
 
@@ -36,8 +35,7 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.location.Country.entityKey", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.Country.menuNameKey", sortSeq = 1))
+@DodoEntity(nameKey = "dodo.privilege.admin.location.Country.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.Country.menuNameKey", sortSeq = 1))
 @DodoTreeRef(mapParentField = "__ROOT_END__", selfQueryParams = "eq(\"inUse\",true);")
 public class Country extends BaseEntity {
     private static final long serialVersionUID = 3849237922158766894L;

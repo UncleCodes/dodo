@@ -13,7 +13,6 @@ import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoFileType;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 
 /**
@@ -27,8 +26,7 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.entityKey", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.menuNameKey", sortSeq = 3), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.menuNameKey", sortSeq = 5))
+@DodoEntity(nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.menuNameKey", sortSeq = 3), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.menuNameKey", sortSeq = 5))
 public class VideoAfterAd extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 2055788296068047168L;
 

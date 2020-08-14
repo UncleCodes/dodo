@@ -13,7 +13,6 @@ import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoFileType;
 import com.dodo.common.annotation.field.FileStyle;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.example.enums.PersonKind;
 
@@ -28,8 +27,7 @@ import com.example.enums.PersonKind;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "字段关联", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "字段关联演示", sortSeq = 11))
+@DodoEntity(name = "字段关联", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "字段关联演示", sortSeq = 11))
 public class ShowOnDemo extends BaseEntity {
 
     private static final long serialVersionUID = -880789857565402658L;

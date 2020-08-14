@@ -13,7 +13,6 @@ import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.privilege.entity.admin_1.base_1.Admin;
 
@@ -29,8 +28,7 @@ import com.dodo.privilege.entity.admin_1.base_1.Admin;
 @Entity
 @DynamicInsert
 @DodoEntity(nameKey = "dodo.privilege.monitor.log.LoginLog.entityKey", actions = { DodoAction.VIEW, DodoAction.CHART,
-        DodoAction.EXPORT })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2), levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.log.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.log.LoginLog.menuNameKey", sortSeq = 2))
+        DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2), levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.log.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.log.LoginLog.menuNameKey", sortSeq = 2))
 public class LoginLog extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -4135230699431949799L;
 

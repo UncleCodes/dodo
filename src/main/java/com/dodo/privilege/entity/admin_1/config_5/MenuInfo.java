@@ -23,7 +23,6 @@ import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.field.DodoValueGenerator;
 import com.dodo.common.annotation.menu.DodoMenu;
 import com.dodo.common.annotation.menu.DodoMenuLevel;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.tree.DodoTreeRef;
 import com.dodo.common.framework.entity.BaseEntity;
 
@@ -38,8 +37,7 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.config.MenuInfo.entityKey", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.MenuInfo.menuNameKey", sortSeq = 1))
+@DodoEntity(nameKey = "dodo.privilege.admin.config.MenuInfo.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.MenuInfo.menuNameKey", sortSeq = 1))
 @DodoTreeRef(mapParentField = "parentMenuInfo")
 public class MenuInfo extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 8523228719650980079L;

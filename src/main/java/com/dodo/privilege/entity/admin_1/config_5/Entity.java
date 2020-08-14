@@ -18,7 +18,6 @@ import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.tree.DodoTreeRef;
 import com.dodo.common.framework.entity.BaseEntity;
 
@@ -34,8 +33,7 @@ import com.dodo.common.framework.entity.BaseEntity;
 @javax.persistence.Entity
 @DynamicInsert
 @DodoEntity(nameKey = "dodo.privilege.admin.config.Entity.entityKey", actions = { DodoAction.VIEW, DodoAction.CHART,
-        DodoAction.EXPORT })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.Entity.menuNameKey", sortSeq = 2))
+        DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.Entity.menuNameKey", sortSeq = 2))
 @DodoTreeRef(mapParentField = "menuInfo")
 public class Entity extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -1772991102203306349L;

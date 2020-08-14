@@ -11,7 +11,6 @@ import com.dodo.common.annotation.cascade.DodoCascade;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoViewGroup;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.privilege.entity.admin_1.location_6.City;
 import com.dodo.privilege.entity.admin_1.location_6.Country;
@@ -29,8 +28,7 @@ import com.dodo.privilege.entity.admin_1.location_6.Province;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "级联", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "级联演示", sortSeq = 8))
+@DodoEntity(name = "级联", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "级联演示", sortSeq = 8))
 public class CascadeDemo extends BaseEntity {
 
     private static final long serialVersionUID = 2236186294198415373L;

@@ -21,7 +21,6 @@ import com.dodo.common.annotation.action.DodoActionType;
 import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.menu.DodoMenu;
 import com.dodo.common.annotation.menu.DodoMenuLevel;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.right.DodoButtonRight;
 import com.dodo.common.annotation.right.DodoButtonRightEvent;
 import com.dodo.common.annotation.right.DodoButtonRights;
@@ -500,7 +499,7 @@ class MakeBaseDataUtil {
     private static void initExtendModel(List<Class<?>> classList, Session session) throws SecurityException,
             NoSuchFieldException {
         for (Class<?> clazz : classList) {
-            if ((!clazz.isAnnotationPresent(DodoMenus.class)) || (!clazz.isAnnotationPresent(DodoEntity.class))) {
+            if (!clazz.isAnnotationPresent(DodoEntity.class)) {
                 continue;
             }
 
@@ -672,13 +671,6 @@ class MakeBaseDataUtil {
                         clientLanguage = null;
                     }
                 }
-                DodoMenus dodoMenus = null;
-                if (clazz.isAnnotationPresent(DodoMenus.class)) {
-                    dodoMenus = clazz.getAnnotation(DodoMenus.class);
-                } else {
-                    continue;
-                }
-
                 DodoEntity dodoEntity = null;
                 if (clazz.isAnnotationPresent(DodoEntity.class)) {
                     dodoEntity = clazz.getAnnotation(DodoEntity.class);
@@ -695,9 +687,9 @@ class MakeBaseDataUtil {
                     }
                 }
 
-                DodoMenu menuOne = dodoMenus.levelOne();
-                DodoMenu menuTwo = dodoMenus.levelTwo();
-                DodoMenu menuThree = dodoMenus.levelThree();
+                DodoMenu menuOne = dodoEntity.levelOne();
+                DodoMenu menuTwo = dodoEntity.levelTwo();
+                DodoMenu menuThree = dodoEntity.levelThree();
 
                 MenuInfo menuInfoOne = saveMenu(session, menuOne, ++levelOne, rootMenu.getMenuLink()
                         + "/framemenu/left_{0}.jhtml", rootMenu);

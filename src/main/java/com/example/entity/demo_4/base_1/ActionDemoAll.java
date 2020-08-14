@@ -9,7 +9,6 @@ import com.dodo.common.annotation.action.DodoAction;
 import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 
 /**
@@ -24,8 +23,7 @@ import com.dodo.common.framework.entity.BaseEntity;
 @Entity
 @DynamicInsert
 // actions = { DodoAction.ALL } = 开启全部功能生成
-@DodoEntity(name = "全部Action", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "全部Action演示", sortSeq = 1))
+@DodoEntity(name = "全部Action", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "全部Action演示", sortSeq = 1))
 public class ActionDemoAll extends BaseEntity {
 
     private static final long serialVersionUID = 7953109081252074508L;

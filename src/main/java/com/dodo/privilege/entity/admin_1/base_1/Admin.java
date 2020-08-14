@@ -22,7 +22,6 @@ import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.field.DodoViewGroup;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.right.DodoRowRight;
 import com.dodo.common.framework.bean.tree.DodoTree;
 import com.dodo.common.framework.entity.BaseEntity;
@@ -39,8 +38,7 @@ import com.dodo.security.DodoUserDetails;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.base.Admin.entityKey", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.base.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.base.Admin.menuNameKey", sortSeq = 1))
+@DodoEntity(nameKey = "dodo.privilege.admin.base.Admin.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.base.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.base.Admin.menuNameKey", sortSeq = 1))
 @DodoRowRight(entityProperty = "addBy")
 public class Admin extends BaseEntity implements DodoUserDetails {
     private static final long            serialVersionUID = -7519486823153844426L;

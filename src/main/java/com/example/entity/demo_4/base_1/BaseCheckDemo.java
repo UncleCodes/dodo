@@ -14,7 +14,6 @@ import com.dodo.common.annotation.field.DodoFileType;
 import com.dodo.common.annotation.field.DodoValueGenerator;
 import com.dodo.common.annotation.field.FileStyle;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.privilege.entity.admin_1.location_6.City;
 
@@ -29,8 +28,7 @@ import com.dodo.privilege.entity.admin_1.location_6.City;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "字段校验", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "字段校验演示", sortSeq = 5))
+@DodoEntity(name = "字段校验", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "字段校验演示", sortSeq = 5))
 @DodoUniqueGroup(fieldNames = { "clazz", "name" })
 public class BaseCheckDemo extends BaseEntity {
 

@@ -9,7 +9,6 @@ import com.dodo.common.annotation.action.DodoAction;
 import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.right.DodoButtonLocation;
 import com.dodo.common.annotation.right.DodoButtonRight;
 import com.dodo.common.annotation.right.DodoButtonRightEvent;
@@ -27,8 +26,7 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "自定义按钮", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "自定义按钮演示", sortSeq = 7))
+@DodoEntity(name = "自定义按钮", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "自定义按钮演示", sortSeq = 7))
 @DodoButtonRight(name = "底部AJAX", path = "/bottom/ajax", model = DodoButtonRightModel.MODEL, location = DodoButtonLocation.BOTTOM, event = DodoButtonRightEvent.AJAX)
 @DodoButtonRight(name = "顶部AJAX", path = "/top/ajax", model = DodoButtonRightModel.MODEL, location = DodoButtonLocation.TOP, event = DodoButtonRightEvent.AJAX)
 @DodoButtonRight(name = "底部URL", path = "https://www.0yi0.com", model = DodoButtonRightModel.MODEL, location = DodoButtonLocation.BOTTOM, event = DodoButtonRightEvent.URL, urlTarget = "_blank")

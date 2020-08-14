@@ -12,7 +12,6 @@ import com.dodo.common.annotation.check.DodoUniqueGroup;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.FileStyle;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.privilege.enums.ExtendModelFieldType;
 
@@ -27,8 +26,7 @@ import com.dodo.privilege.enums.ExtendModelFieldType;
  */
 @javax.persistence.Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.config.ExtendModel.entityKey", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.ExtendModel.menuNameKey", sortSeq = 6))
+@DodoEntity(nameKey = "dodo.privilege.admin.config.ExtendModel.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.ExtendModel.menuNameKey", sortSeq = 6))
 @DodoUniqueGroup(fieldNames = { "entity", "extFieldName" })
 public class ExtendModel extends BaseEntity implements java.io.Serializable {
     private static final long    serialVersionUID = 2740252352760524146L;

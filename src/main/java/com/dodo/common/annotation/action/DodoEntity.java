@@ -7,6 +7,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import com.dodo.common.annotation.menu.DodoMenu;
+
 /**
  * 该注解所在的实体会纳入<code>Dodo Framework</code>管理范围
  * 
@@ -36,4 +38,10 @@ public @interface DodoEntity {
     public String remark() default "";
 
     public DodoAction[] actions() default {};
+
+    public DodoMenu levelOne();
+
+    public DodoMenu levelTwo();
+
+    public DodoMenu levelThree();
 }

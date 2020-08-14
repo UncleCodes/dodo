@@ -12,7 +12,6 @@ import com.dodo.common.annotation.action.DodoAction;
 import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.right.DodoButtonRight;
 import com.dodo.common.annotation.right.DodoButtonRightEvent;
 import com.dodo.common.annotation.right.DodoButtonRightModel;
@@ -32,8 +31,7 @@ import com.dodo.privilege.entity.monitor_2.log_1.LoginLog;
 @Entity
 @DynamicInsert
 @DodoEntity(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.entityKey", actions = { DodoAction.VIEW,
-        DodoAction.CHART, DodoAction.EXPORT })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2), levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.active.menuNameKey", sortSeq = 2), levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.menuNameKey", sortSeq = 1))
+        DodoAction.CHART, DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2), levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.active.menuNameKey", sortSeq = 2), levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.menuNameKey", sortSeq = 1))
 @DodoButtonRight(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.button.killone.namekey", model = DodoButtonRightModel.ROW, path = "/killone", event = DodoButtonRightEvent.AJAX)
 @DodoButtonRight(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.button.killall.namekey", model = DodoButtonRightModel.MODEL, path = "/killall", event = DodoButtonRightEvent.AJAX)
 public class BackSessionInfo extends BaseEntity implements java.io.Serializable {

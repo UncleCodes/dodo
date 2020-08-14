@@ -18,7 +18,6 @@ import com.dodo.common.annotation.action.DodoEntity;
 import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.right.DodoButtonLocation;
 import com.dodo.common.annotation.right.DodoButtonRight;
 import com.dodo.common.annotation.right.DodoButtonRightEvent;
@@ -37,8 +36,7 @@ import com.dodo.common.framework.entity.BaseEntity;
 @Entity
 @DynamicInsert
 @DodoEntity(nameKey = "dodo.privilege.report.config.ReportEntity.entityKey", actions = { DodoAction.UPDATE,
-        DodoAction.DELETE, DodoAction.CHART, DodoAction.VIEW, DodoAction.EXPORT })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3), levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportEntity.menuNameKey", sortSeq = 3))
+        DodoAction.DELETE, DodoAction.CHART, DodoAction.VIEW, DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3), levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportEntity.menuNameKey", sortSeq = 3))
 @DodoButtonRight(nameKey = "dodo.privilege.report.config.ReportEntity.button.design.namekey", path = "${rootPath}/sqlreport/design.jhtml", model = DodoButtonRightModel.ROW, event = DodoButtonRightEvent.URL)
 @DodoButtonRight(nameKey = "dodo.privilege.report.config.ReportEntity.button.viewreport.namekey", path = "${rootPath}/sqlreport/report.jhtml", model = DodoButtonRightModel.ROW, urlTarget = "_blank", event = DodoButtonRightEvent.URL)
 @DodoButtonRight(nameKey = "dodo.privilege.report.config.ReportEntity.button.design.namekey", path = "${rootPath}/sqlreport/design.jhtml", model = DodoButtonRightModel.MODEL, event = DodoButtonRightEvent.URL, urlTarget = "_blank", location = DodoButtonLocation.TOP)

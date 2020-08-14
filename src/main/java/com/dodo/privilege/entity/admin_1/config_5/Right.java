@@ -17,7 +17,6 @@ import com.dodo.common.annotation.field.DodoField;
 import com.dodo.common.annotation.field.DodoShowColumn;
 import com.dodo.common.annotation.field.DodoValueGenerator;
 import com.dodo.common.annotation.menu.DodoMenu;
-import com.dodo.common.annotation.menu.DodoMenus;
 import com.dodo.common.annotation.tree.DodoTreeRef;
 import com.dodo.common.framework.entity.BaseEntity;
 import com.dodo.privilege.entity.admin_1.base_1.Role;
@@ -33,8 +32,7 @@ import com.dodo.privilege.entity.admin_1.base_1.Role;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.config.Right.entityKey", actions = { DodoAction.ALL })
-@DodoMenus(levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.Right.menuNameKey", sortSeq = 3))
+@DodoEntity(nameKey = "dodo.privilege.admin.config.Right.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.Right.menuNameKey", sortSeq = 3))
 @DodoTreeRef(mapParentField = "menuInfo", selfQueryParams = "isNull(\"managerRight\")")
 public class Right extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -2048846785994031276L;
