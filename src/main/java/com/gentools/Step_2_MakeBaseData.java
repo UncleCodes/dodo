@@ -639,6 +639,7 @@ class MakeBaseDataUtil {
     }
 
     public static void makeBaseData() throws Exception {
+        EnumInterface.init(DodoMenuLevel.class);
         long beginTime = System.currentTimeMillis();
         hibernateConfigUtil = new HibernateConfigUtil();
         Session session = hibernateConfigUtil.getNewSession();
