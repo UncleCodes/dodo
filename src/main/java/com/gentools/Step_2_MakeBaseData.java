@@ -345,7 +345,7 @@ class MakeBaseDataUtil {
             entity = new com.dodo.privilege.entity.admin_1.config_5.Entity();
             entity.setActionName(DodoGenerateCodeUtil.actionBasePackage + HibernateConfigUtil.getShortPackage(clazz)
                     + "." + clazz.getSimpleName() + "Action");
-            entity.setActionType(DodoAction2DodoActionTypes.transfer(dodoEntity.actions()).toString());
+            entity.setActionType(DodoAction2DodoActionTypes.transfer(dodoEntity).toString());
             entity.setBasePath(basepath);
             entity.setClassName(clazz.getName());
             entity.setCreateDate(new Date());
@@ -707,7 +707,7 @@ class MakeBaseDataUtil {
                 }
 
                 List<DodoActionType> myTypes = new ArrayList<DodoActionType>();
-                Set<DodoActionType> configTypes = DodoAction2DodoActionTypes.transfer(dodoEntity.actions());
+                Set<DodoActionType> configTypes = DodoAction2DodoActionTypes.transfer(dodoEntity);
                 for (DodoActionType type : configTypes) {
                     myTypes.add(type);
                 }
