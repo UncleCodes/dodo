@@ -30,14 +30,29 @@ import com.dodo.privilege.entity.monitor_2.log_1.LoginLog;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.entityKey", actions = { DodoAction.VIEW,
-        DodoAction.CHART, DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2), levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.active.menuNameKey", sortSeq = 2), levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.menuNameKey", sortSeq = 1))
-@DodoButtonRight(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.button.killone.namekey", model = DodoButtonRightModel.ROW, path = "/killone", event = DodoButtonRightEvent.AJAX)
-@DodoButtonRight(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.button.killall.namekey", model = DodoButtonRightModel.MODEL, path = "/killall", event = DodoButtonRightEvent.AJAX)
+@DodoEntity(
+        nameKey = "dodo.privilege.monitor.active.BackSessionInfo.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.CHART, DodoAction.EXPORT },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.active.menuNameKey", sortSeq = 2),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.active.BackSessionInfo.menuNameKey", sortSeq = 1))
+@DodoButtonRight(
+        nameKey = "dodo.privilege.monitor.active.BackSessionInfo.button.killone.namekey",
+        model = DodoButtonRightModel.ROW,
+        path = "/killone",
+        event = DodoButtonRightEvent.AJAX)
+@DodoButtonRight(
+        nameKey = "dodo.privilege.monitor.active.BackSessionInfo.button.killall.namekey",
+        model = DodoButtonRightModel.MODEL,
+        path = "/killall",
+        event = DodoButtonRightEvent.AJAX)
 public class BackSessionInfo extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 8726840843700240844L;
 
-    @DodoField(sortSeq = -1, nameKey = "dodo.privilege.monitor.active.BackSessionInfo.namekey.admin", queryOnList = true)
+    @DodoField(
+            sortSeq = -1,
+            nameKey = "dodo.privilege.monitor.active.BackSessionInfo.namekey.admin",
+            queryOnList = true)
     private Admin             admin;
 
     @DodoField(sortSeq = 0, nameKey = "dodo.privilege.monitor.active.BackSessionInfo.namekey.loginLog")
@@ -46,7 +61,10 @@ public class BackSessionInfo extends BaseEntity implements java.io.Serializable 
     @DodoField(sortSeq = 1, nameKey = "dodo.privilege.monitor.active.BackSessionInfo.namekey.beginTime")
     private Date              beginTime;
 
-    @DodoField(sortSeq = 2, nameKey = "dodo.privilege.monitor.active.BackSessionInfo.namekey.userName", queryOnList = true)
+    @DodoField(
+            sortSeq = 2,
+            nameKey = "dodo.privilege.monitor.active.BackSessionInfo.namekey.userName",
+            queryOnList = true)
     private String            userName;
 
     @DodoField(sortSeq = 3, nameKey = "dodo.privilege.monitor.active.BackSessionInfo.namekey.name")

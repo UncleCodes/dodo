@@ -27,23 +27,44 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.report.config.ReportField.entityKey", actions = { DodoAction.VIEW,
-        DodoAction.UPDATE, DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3), levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportField.menuNameKey", sortSeq = 4))
+@DodoEntity(
+        nameKey = "dodo.privilege.report.config.ReportField.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.UPDATE, DodoAction.EXPORT },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportField.menuNameKey", sortSeq = 4))
 public class ReportField extends BaseEntity {
     private static final long serialVersionUID = -4443407897694944602L;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.report.config.ReportField.namekey.reportEntity", isnullable = false, editable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.report.config.ReportField.namekey.reportEntity",
+            isnullable = false,
+            editable = false,
+            queryOnList = true)
     private ReportEntity      reportEntity;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.report.config.ReportField.namekey.queryField", isnullable = false, editable = false)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.report.config.ReportField.namekey.queryField",
+            isnullable = false,
+            editable = false)
     @DodoShowColumn(sortSeq = 0)
     private String            queryField;
 
-    @DodoField(sortSeq = 2, nameKey = "dodo.privilege.report.config.ReportField.namekey.showName", isnullable = false, maxLength = 64)
+    @DodoField(
+            sortSeq = 2,
+            nameKey = "dodo.privilege.report.config.ReportField.namekey.showName",
+            isnullable = false,
+            maxLength = 64)
     @DodoShowColumn(sortSeq = 1)
     private String            showName;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.report.config.ReportField.namekey.fieldType", isnullable = false, editable = false)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.report.config.ReportField.namekey.fieldType",
+            isnullable = false,
+            editable = false)
     private ReportFieldType   fieldType;
 
     @DodoField(sortSeq = 4, nameKey = "dodo.privilege.report.config.ReportField.namekey.queryType")
@@ -52,7 +73,11 @@ public class ReportField extends BaseEntity {
     @DodoField(sortSeq = 5, nameKey = "dodo.privilege.report.config.ReportField.namekey.isShow", isnullable = false)
     private Boolean           isShow;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.report.config.ReportField.namekey.jumpLink", editable = false, infoTipKey = "dodo.privilege.report.config.ReportField.infoTip.jumpLink")
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.report.config.ReportField.namekey.jumpLink",
+            editable = false,
+            infoTipKey = "dodo.privilege.report.config.ReportField.infoTip.jumpLink")
     private String            jumpLink;
 
     @ManyToOne

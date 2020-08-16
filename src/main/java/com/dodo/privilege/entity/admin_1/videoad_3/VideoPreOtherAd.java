@@ -28,36 +28,86 @@ import com.dodo.privilege.enums.VideoCountDownsPosition;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.menuNameKey", sortSeq = 3), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.menuNameKey", sortSeq = 2))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.menuNameKey", sortSeq = 3),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.menuNameKey", sortSeq = 2))
 public class VideoPreOtherAd extends BaseEntity implements java.io.Serializable {
     private static final long       serialVersionUID = 2989790219927042165L;
 
-    @DodoField(sortSeq = -1, nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.adTitle", isnullable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = -1,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.adTitle",
+            isnullable = false,
+            queryOnList = true)
     @DodoShowColumn(sortSeq = 0)
     private String                  adTitle;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.beginTime", dateFormat = "yyyy-MM-dd HH:mm:ss", isnullable = false)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.beginTime",
+            dateFormat = "yyyy-MM-dd HH:mm:ss",
+            isnullable = false)
     private Date                    beginTime;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.endTime", dateFormat = "yyyy-MM-dd HH:mm:ss", isnullable = false)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.endTime",
+            dateFormat = "yyyy-MM-dd HH:mm:ss",
+            isnullable = false)
     private Date                    endTime;
 
-    @DodoField(sortSeq = 2, nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.countTime", infoTipKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.infoTip.countTime", isDigits = true, min = "1", max = "3600", isnullable = false)
+    @DodoField(
+            sortSeq = 2,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.countTime",
+            infoTipKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.infoTip.countTime",
+            isDigits = true,
+            min = "1",
+            max = "3600",
+            isnullable = false)
     private Integer                 countTime;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.width", infoTipKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.infoTip.width", isDigits = true, min = "1", max = "3600", isnullable = false)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.width",
+            infoTipKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.infoTip.width",
+            isDigits = true,
+            min = "1",
+            max = "3600",
+            isnullable = false)
     private Integer                 width;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.height", infoTipKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.infoTip.height", isDigits = true, min = "1", max = "3600", isnullable = false)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.height",
+            infoTipKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.infoTip.height",
+            isDigits = true,
+            min = "1",
+            max = "3600",
+            isnullable = false)
     private Integer                 height;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.videoCountDownsPosition", isnullable = false)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.videoCountDownsPosition",
+            isnullable = false)
     private VideoCountDownsPosition videoCountDownsPosition;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.adFile", isnullable = false, isFile = true, fileType = { @DodoFileType(titleKey = "dodo.file.upload.titlekey.files", extensions = "swf,jpg,gif,png") })
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.adFile",
+            isnullable = false,
+            isFile = true,
+            fileType = { @DodoFileType(titleKey = "dodo.file.upload.titlekey.files", extensions = "swf,jpg,gif,png") })
     private String                  adFile;
 
-    @DodoField(sortSeq = 7, nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.adRealUrl", infoTipKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.infoTip.adRealUrl", isnullable = false)
+    @DodoField(
+            sortSeq = 7,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.namekey.adRealUrl",
+            infoTipKey = "dodo.privilege.admin.videoad.VideoPreOtherAd.infoTip.adRealUrl",
+            isnullable = false)
     private String                  adRealUrl;
 
     public Date getBeginTime() {

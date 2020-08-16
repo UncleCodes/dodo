@@ -26,30 +26,70 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.menuNameKey", sortSeq = 3), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.menuNameKey", sortSeq = 5))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.menuNameKey", sortSeq = 3),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.menuNameKey", sortSeq = 5))
 public class VideoAfterAd extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 2055788296068047168L;
 
-    @DodoField(sortSeq = -1, nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.adTitle", isnullable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = -1,
+            nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.adTitle",
+            isnullable = false,
+            queryOnList = true)
     @DodoShowColumn(sortSeq = 0)
     private String            adTitle;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.beginTime", dateFormat = "yyyy-MM-dd HH:mm:ss", isnullable = false)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.beginTime",
+            dateFormat = "yyyy-MM-dd HH:mm:ss",
+            isnullable = false)
     private Date              beginTime;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.endTime", dateFormat = "yyyy-MM-dd HH:mm:ss", isnullable = false)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.endTime",
+            dateFormat = "yyyy-MM-dd HH:mm:ss",
+            isnullable = false)
     private Date              endTime;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.adFile", isnullable = false, isFile = true, fileType = { @DodoFileType(titleKey = "dodo.file.upload.titlekey.files", extensions = "swf,jpg,gif,png") })
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.adFile",
+            isnullable = false,
+            isFile = true,
+            fileType = { @DodoFileType(titleKey = "dodo.file.upload.titlekey.files", extensions = "swf,jpg,gif,png") })
     private String            adFile;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.adRealUrl", infoTipKey = "dodo.privilege.admin.videoad.VideoAfterAd.infoTip.adRealUrl", isnullable = false)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.adRealUrl",
+            infoTipKey = "dodo.privilege.admin.videoad.VideoAfterAd.infoTip.adRealUrl",
+            isnullable = false)
     private String            adRealUrl;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.width", infoTipKey = "dodo.privilege.admin.videoad.VideoAfterAd.infoTip.width", isDigits = true, min = "1", max = "3600", isnullable = false)
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.width",
+            infoTipKey = "dodo.privilege.admin.videoad.VideoAfterAd.infoTip.width",
+            isDigits = true,
+            min = "1",
+            max = "3600",
+            isnullable = false)
     private Integer           width;
 
-    @DodoField(sortSeq = 7, nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.height", infoTipKey = "dodo.privilege.admin.videoad.VideoAfterAd.infoTip.height", isDigits = true, min = "1", max = "3600", isnullable = false)
+    @DodoField(
+            sortSeq = 7,
+            nameKey = "dodo.privilege.admin.videoad.VideoAfterAd.namekey.height",
+            infoTipKey = "dodo.privilege.admin.videoad.VideoAfterAd.infoTip.height",
+            isDigits = true,
+            min = "1",
+            max = "3600",
+            isnullable = false)
     private Integer           height;
 
     public Integer getWidth() {

@@ -25,13 +25,22 @@ import com.example.enums.PersonKind;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "行级权限(使用扩展属性)", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "行级权限演示(2)", sortSeq = 10))
+@DodoEntity(
+        name = "行级权限(使用扩展属性)",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7),
+        levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1),
+        levelThree = @DodoMenu(name = "行级权限演示(2)", sortSeq = 10))
 @DodoRowRight(entityProperty = "personKind", principalKey = "extPersonKind", principalKeyShowName = "行级权限Demo2：人员类别")
 public class RowRightDemo2 extends BaseEntity {
 
     private static final long serialVersionUID = 2340857123849986982L;
 
-    @DodoField(sortSeq = 1, name = "人员类别", isnullable = false, infoTip = "添加数据成功后，需要在角色管理里面，修改扩展属性'行级权限Demo2：人员类别'，来决定某个角色可以操作哪些数据")
+    @DodoField(
+            sortSeq = 1,
+            name = "人员类别",
+            isnullable = false,
+            infoTip = "添加数据成功后，需要在角色管理里面，修改扩展属性'行级权限Demo2：人员类别'，来决定某个角色可以操作哪些数据")
     private PersonKind        personKind;
 
     @DodoField(sortSeq = 2, name = "其他信息", isnullable = false)

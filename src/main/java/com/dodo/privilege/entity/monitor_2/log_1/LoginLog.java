@@ -27,34 +27,64 @@ import com.dodo.privilege.entity.admin_1.base_1.Admin;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.monitor.log.LoginLog.entityKey", actions = { DodoAction.VIEW, DodoAction.CHART,
-        DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2), levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.log.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.log.LoginLog.menuNameKey", sortSeq = 2))
+@DodoEntity(
+        nameKey = "dodo.privilege.monitor.log.LoginLog.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.CHART, DodoAction.EXPORT },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.log.menuNameKey", sortSeq = 1),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.log.LoginLog.menuNameKey", sortSeq = 2))
 public class LoginLog extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -4135230699431949799L;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.admin", addable = false, editable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.admin",
+            addable = false,
+            editable = false,
+            queryOnList = true)
     private Admin             admin;
 
     @DodoField(sortSeq = 2, nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.sessionId", addable = false)
     @DodoShowColumn(sortSeq = 0)
     private String            sessionId;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.loginIp", addable = false, editable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.loginIp",
+            addable = false,
+            editable = false,
+            queryOnList = true)
     private String            loginIp;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.browserType", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.browserType",
+            addable = false,
+            editable = false)
     private String            browserType;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.loginFlag", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.loginFlag",
+            addable = false,
+            editable = false)
     private Boolean           loginFlag;
 
     @DodoField(sortSeq = 6, nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.loginFailReason", addable = false)
     private String            loginFailReason;
 
-    @DodoField(sortSeq = 7, nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.onlineTime", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 7,
+            nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.onlineTime",
+            addable = false,
+            editable = false)
     private String            onlineTime;
 
-    @DodoField(sortSeq = 8, nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.migrateSessionFlag", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 8,
+            nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.migrateSessionFlag",
+            addable = false,
+            editable = false)
     private Boolean           migrateSessionFlag;
 
     @DodoField(sortSeq = 9, nameKey = "dodo.privilege.monitor.log.LoginLog.namekey.oldSessionId", addable = false)

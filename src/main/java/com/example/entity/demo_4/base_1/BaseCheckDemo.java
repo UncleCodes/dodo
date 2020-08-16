@@ -28,7 +28,12 @@ import com.dodo.privilege.entity.admin_1.location_6.City;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "字段校验", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "字段校验演示", sortSeq = 5))
+@DodoEntity(
+        name = "字段校验",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7),
+        levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1),
+        levelThree = @DodoMenu(name = "字段校验演示", sortSeq = 5))
 @DodoUniqueGroup(fieldNames = { "clazz", "name" })
 public class BaseCheckDemo extends BaseEntity {
 
@@ -55,7 +60,13 @@ public class BaseCheckDemo extends BaseEntity {
     @DodoField(sortSeq = 7, name = "限制大小", min = "666", max = "888")
     private Integer           maxminNumber;
 
-    @DodoField(sortSeq = 8, name = "城市1", infoTip = "弹出选择，所有名字包含'张'的城市", queryParams = "like(\"name\",\"张\")", isPopup = true, queryOnList = true)
+    @DodoField(
+            sortSeq = 8,
+            name = "城市1",
+            infoTip = "弹出选择，所有名字包含'张'的城市",
+            queryParams = "like(\"name\",\"张\")",
+            isPopup = true,
+            queryOnList = true)
     private City              city1;
 
     @DodoField(sortSeq = 9, name = "城市2", infoTip = "所有名字包含'门'的城市", queryParams = "like(\"name\",\"门\")")
@@ -72,7 +83,13 @@ public class BaseCheckDemo extends BaseEntity {
     @DodoField(sortSeq = 13, name = "正则校验", regExp = "\\d{3,8}", regExpTip = "请输入我设定的规则~~哈", infoTip = "正则：3-8位数字")
     private String            regStr;
 
-    @DodoField(sortSeq = 20, name = "1M以内图片", isFile = true, fileStyle = FileStyle.OnlyPath, fileType = { @DodoFileType(title = "图片文件", extensions = "jpg,jpeg,gif,png,bmp") }, maxFileSize = 1)
+    @DodoField(
+            sortSeq = 20,
+            name = "1M以内图片",
+            isFile = true,
+            fileStyle = FileStyle.OnlyPath,
+            fileType = { @DodoFileType(title = "图片文件", extensions = "jpg,jpeg,gif,png,bmp") },
+            maxFileSize = 1)
     private String            imageField;
 
     @DodoField(sortSeq = 21, name = "班级", isSetDefault = false, infoTip = "与'姓名'联合唯一")

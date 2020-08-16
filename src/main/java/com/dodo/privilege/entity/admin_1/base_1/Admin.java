@@ -38,21 +38,41 @@ import com.dodo.security.DodoUserDetails;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.base.Admin.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.base.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.base.Admin.menuNameKey", sortSeq = 1))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.base.Admin.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.base.menuNameKey", sortSeq = 1),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.base.Admin.menuNameKey", sortSeq = 1))
 @DodoRowRight(entityProperty = "addBy")
 public class Admin extends BaseEntity implements DodoUserDetails {
     private static final long            serialVersionUID = -7519486823153844426L;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Admin.namekey.addBy", sortSeq = -1, isAdmin = true, queryOnList = true)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Admin.namekey.addBy",
+            sortSeq = -1,
+            isAdmin = true,
+            queryOnList = true)
     @DodoViewGroup(groupSeq = 0, groupNameKey = "dodo.privilege.admin.base.Admin.groupName.0")
     private Admin                        addBy;
 
     @DodoShowColumn(sortSeq = 0)
-    @DodoField(nameKey = "dodo.privilege.admin.base.Admin.namekey.username", isnullable = false, sortSeq = 0, editable = false, isRemoteCheck = true, queryOnList = true)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Admin.namekey.username",
+            isnullable = false,
+            sortSeq = 0,
+            editable = false,
+            isRemoteCheck = true,
+            queryOnList = true)
     @DodoViewGroup(groupSeq = 0, groupNameKey = "dodo.privilege.admin.base.Admin.groupName.0")
     private String                       username;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Admin.namekey.adminPassword", sortSeq = 1, listable = false, ispassword = true, infoTipKey = "dodo.privilege.admin.base.Admin.infoTip.adminPassword")
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Admin.namekey.adminPassword",
+            sortSeq = 1,
+            listable = false,
+            ispassword = true,
+            infoTipKey = "dodo.privilege.admin.base.Admin.infoTip.adminPassword")
     @DodoViewGroup(groupSeq = 0, groupNameKey = "dodo.privilege.admin.base.Admin.groupName.0")
     private String                       adminPassword;
 
@@ -89,27 +109,51 @@ public class Admin extends BaseEntity implements DodoUserDetails {
     @DodoViewGroup(groupSeq = 2, groupNameKey = "dodo.privilege.admin.base.Admin.groupName.2")
     private Boolean                      isCredentialsExpired;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Admin.namekey.loginFailureCount", sortSeq = 9, addable = false, editable = false)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Admin.namekey.loginFailureCount",
+            sortSeq = 9,
+            addable = false,
+            editable = false)
     @DodoViewGroup(groupSeq = 2, groupNameKey = "dodo.privilege.admin.base.Admin.groupName.2")
     private Integer                      loginFailureCount;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Admin.namekey.lockedDate", sortSeq = 10, addable = false, editable = false)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Admin.namekey.lockedDate",
+            sortSeq = 10,
+            addable = false,
+            editable = false)
     @DodoViewGroup(groupSeq = 2, groupNameKey = "dodo.privilege.admin.base.Admin.groupName.2")
     private Date                         lockedDate;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Admin.namekey.loginDate", sortSeq = 11, addable = false, editable = false)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Admin.namekey.loginDate",
+            sortSeq = 11,
+            addable = false,
+            editable = false)
     @DodoViewGroup(groupSeq = 3, groupNameKey = "dodo.privilege.admin.base.Admin.groupName.3")
     private Date                         loginDate;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Admin.namekey.loginIp", sortSeq = 12, addable = false, editable = false)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Admin.namekey.loginIp",
+            sortSeq = 12,
+            addable = false,
+            editable = false)
     @DodoViewGroup(groupSeq = 3, groupNameKey = "dodo.privilege.admin.base.Admin.groupName.3")
     private String                       loginIp;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Admin.namekey.browserType", sortSeq = 13, addable = false, editable = false)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Admin.namekey.browserType",
+            sortSeq = 13,
+            addable = false,
+            editable = false)
     @DodoViewGroup(groupSeq = 3, groupNameKey = "dodo.privilege.admin.base.Admin.groupName.3")
     private String                       browserType;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Admin.namekey.roleSet", isnullable = false, sortSeq = 14, isPopup = true)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Admin.namekey.roleSet",
+            isnullable = false,
+            sortSeq = 14,
+            isPopup = true)
     @DodoViewGroup(groupSeq = 4, groupNameKey = "dodo.privilege.admin.base.Admin.groupName.4")
     private Set<Role>                    roleSet          = new HashSet<Role>();
     private Collection<GrantedAuthority> authorities;

@@ -25,8 +25,12 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.job.QuartzJob.entityKey", actions = { DodoAction.VIEW, DodoAction.CHART,
-        DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.job.menuNameKey", sortSeq = 2), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.job.QuartzJob.menuNameKey", sortSeq = 1))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.job.QuartzJob.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.CHART, DodoAction.EXPORT },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.job.menuNameKey", sortSeq = 2),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.job.QuartzJob.menuNameKey", sortSeq = 1))
 public class QuartzJob extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 4416453129912851423L;
 
@@ -46,12 +50,22 @@ public class QuartzJob extends BaseEntity implements java.io.Serializable {
     @DodoField(sortSeq = 4, nameKey = "dodo.privilege.admin.job.QuartzJob.namekey.endTime")
     private Date              endTime;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.admin.job.QuartzJob.namekey.repeatCount", isDigits = true, min = "-1", max = Integer.MAX_VALUE
-            + "", infoTipKey = "dodo.privilege.admin.job.QuartzJob.infoTip.repeatCount")
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.admin.job.QuartzJob.namekey.repeatCount",
+            isDigits = true,
+            min = "-1",
+            max = Integer.MAX_VALUE + "",
+            infoTipKey = "dodo.privilege.admin.job.QuartzJob.infoTip.repeatCount")
     private int               repeatCount;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.admin.job.QuartzJob.namekey.repeatInterval", isDigits = true, min = "0", max = Integer.MAX_VALUE
-            + "", infoTipKey = "dodo.privilege.admin.job.QuartzJob.infoTip.repeatInterval")
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.admin.job.QuartzJob.namekey.repeatInterval",
+            isDigits = true,
+            min = "0",
+            max = Integer.MAX_VALUE + "",
+            infoTipKey = "dodo.privilege.admin.job.QuartzJob.infoTip.repeatInterval")
     private int               repeatInterval;
 
     @DodoField(sortSeq = 7, nameKey = "dodo.privilege.admin.job.QuartzJob.namekey.inUse")

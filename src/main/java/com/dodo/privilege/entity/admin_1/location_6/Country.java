@@ -35,12 +35,21 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.location.Country.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.Country.menuNameKey", sortSeq = 1))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.location.Country.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.Country.menuNameKey", sortSeq = 1))
 @DodoTreeRef(mapParentField = "__ROOT_END__", selfQueryParams = "eq(\"inUse\",true);")
 public class Country extends BaseEntity {
     private static final long serialVersionUID = 3849237922158766894L;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.location.Country.namekey.name", isnullable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.location.Country.namekey.name",
+            isnullable = false,
+            queryOnList = true)
     @DodoShowColumn(sortSeq = 1)
     private String            name;
 
@@ -51,10 +60,22 @@ public class Country extends BaseEntity {
     @DodoField(sortSeq = 2, nameKey = "dodo.privilege.admin.location.Country.namekey.inUse", isnullable = false)
     private Boolean           inUse;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.admin.location.Country.namekey.provinceList", addable = false, editable = false, listable = false, isShowWholeTree = true)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.admin.location.Country.namekey.provinceList",
+            addable = false,
+            editable = false,
+            listable = false,
+            isShowWholeTree = true)
     private List<Province>    provinceList;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.admin.location.Country.namekey.iconImage", isFile = true, fileType = { @DodoFileType(titleKey = "dodo.file.upload.titlekey.images", extensions = "jpg,jpeg,gif,png,bmp") }, fileStyle = FileStyle.OnlyPath)
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.admin.location.Country.namekey.iconImage",
+            isFile = true,
+            fileType = { @DodoFileType(
+                    titleKey = "dodo.file.upload.titlekey.images",
+                    extensions = "jpg,jpeg,gif,png,bmp") }, fileStyle = FileStyle.OnlyPath)
     private String            iconImage;
 
     @DodoField(sortSeq = 7, nameKey = "dodo.privilege.admin.location.Country.namekey.description", isRichText = true)
@@ -85,7 +106,11 @@ public class Country extends BaseEntity {
         return inUse;
     }
 
-    @OneToMany(cascade = { CascadeType.REMOVE }, fetch = FetchType.LAZY, targetEntity = Province.class, mappedBy = "country")
+    @OneToMany(
+            cascade = { CascadeType.REMOVE },
+            fetch = FetchType.LAZY,
+            targetEntity = Province.class,
+            mappedBy = "country")
     @Fetch(FetchMode.SUBSELECT)
     @OrderBy("sortSeq asc")
     public List<Province> getProvinceList() {

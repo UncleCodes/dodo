@@ -37,12 +37,22 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.config.MenuInfo.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.MenuInfo.menuNameKey", sortSeq = 1))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.config.MenuInfo.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.MenuInfo.menuNameKey", sortSeq = 1))
 @DodoTreeRef(mapParentField = "parentMenuInfo")
 public class MenuInfo extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 8523228719650980079L;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.menuLevel", isnullable = false, editable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.menuLevel",
+            isnullable = false,
+            editable = false,
+            queryOnList = true)
     @DodoShowColumn(sortSeq = 1)
     private DodoMenuLevel     menuLevel;
 
@@ -56,18 +66,36 @@ public class MenuInfo extends BaseEntity implements java.io.Serializable {
     @DodoField(sortSeq = 3, isTextArea = true, nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.menuRemark")
     private String            menuRemark;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.menuLink", showOnField = "menuLevel", showOnValue = "LEVEL3", isnullable = false)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.menuLink",
+            showOnField = "menuLevel",
+            showOnValue = "LEVEL3",
+            isnullable = false)
     private String            menuLink;
 
     @DodoShowColumn(sortSeq = 0)
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.menuCode", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.menuCode",
+            addable = false,
+            editable = false)
     @DodoValueGenerator
     private String            menuCode;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.parentMenuInfo", isnullable = false, queryParams = "ne(\"menuLevel\",DodoMenuLevel.LEVEL3)")
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.parentMenuInfo",
+            isnullable = false,
+            queryParams = "ne(\"menuLevel\",DodoMenuLevel.LEVEL3)")
     private MenuInfo          parentMenuInfo;
 
-    @DodoField(sortSeq = 7, nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.allRights", addable = false, listable = false, editable = false)
+    @DodoField(
+            sortSeq = 7,
+            nameKey = "dodo.privilege.admin.config.MenuInfo.namekey.allRights",
+            addable = false,
+            listable = false,
+            editable = false)
     private List<Right>       allRights        = new ArrayList<Right>();
 
     private List<MenuInfo>    childMenuInfo    = new ArrayList<MenuInfo>();

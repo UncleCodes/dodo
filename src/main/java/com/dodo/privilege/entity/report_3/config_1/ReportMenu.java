@@ -23,11 +23,21 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.report.config.ReportMenu.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3), levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportMenu.menuNameKey", sortSeq = 1))
+@DodoEntity(
+        nameKey = "dodo.privilege.report.config.ReportMenu.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportMenu.menuNameKey", sortSeq = 1))
 public class ReportMenu extends BaseEntity {
     private static final long serialVersionUID = 5267212173675296962L;
 
-    @DodoField(sortSeq = 2, nameKey = "dodo.privilege.report.config.ReportMenu.namekey.menuName", isnullable = false, maxLength = 64, queryOnList = true)
+    @DodoField(
+            sortSeq = 2,
+            nameKey = "dodo.privilege.report.config.ReportMenu.namekey.menuName",
+            isnullable = false,
+            maxLength = 64,
+            queryOnList = true)
     @DodoShowColumn(sortSeq = 1)
     private String            menuName;
 

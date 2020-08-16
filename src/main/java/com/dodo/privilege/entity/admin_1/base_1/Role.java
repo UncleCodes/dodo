@@ -38,7 +38,12 @@ import com.dodo.privilege.entity.admin_1.config_5.Right;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.base.Role.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.base.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.base.Role.menuNameKey", sortSeq = 2))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.base.Role.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.base.menuNameKey", sortSeq = 1),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.base.Role.menuNameKey", sortSeq = 2))
 @DodoRowRight(entityProperty = "admin")
 public class Role extends BaseEntity {
     private static final long   serialVersionUID = -6614052029623997372L;
@@ -47,17 +52,33 @@ public class Role extends BaseEntity {
     private Admin               admin;
 
     @DodoShowColumn(sortSeq = 0)
-    @DodoField(nameKey = "dodo.privilege.admin.base.Role.namekey.name", sortSeq = 1, queryOnList = true, isRemoteCheck = true)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Role.namekey.name",
+            sortSeq = 1,
+            queryOnList = true,
+            isRemoteCheck = true)
     private String              name;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Role.namekey.isSystem", sortSeq = 2, addable = false, editable = false)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Role.namekey.isSystem",
+            sortSeq = 2,
+            addable = false,
+            editable = false)
     @DodoShowColumn(sortSeq = 1)
     private Boolean             isSystem;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Role.namekey.description", sortSeq = 4, listable = false, isTextArea = true)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Role.namekey.description",
+            sortSeq = 4,
+            listable = false,
+            isTextArea = true)
     private String              description;
 
-    @DodoField(nameKey = "dodo.privilege.admin.base.Role.namekey.allRights", sortSeq = 5, isnullable = false, listable = false)
+    @DodoField(
+            nameKey = "dodo.privilege.admin.base.Role.namekey.allRights",
+            sortSeq = 5,
+            isnullable = false,
+            listable = false)
     private Set<Right>          allRights;
 
     @DodoField(nameKey = "dodo.privilege.admin.base.Role.namekey.allFieldRights", sortSeq = 6, listable = false)

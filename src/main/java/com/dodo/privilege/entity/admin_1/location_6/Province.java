@@ -36,28 +36,57 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.location.Province.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.Province.menuNameKey", sortSeq = 2))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.location.Province.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.Province.menuNameKey", sortSeq = 2))
 @DodoTreeRef(mapParentField = "country", selfQueryParams = "eq(\"inUse\",true);")
 public class Province extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 3461291242143172195L;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.location.Province.namekey.name", isnullable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.location.Province.namekey.name",
+            isnullable = false,
+            queryOnList = true)
     @DodoShowColumn(sortSeq = 1)
     private String            name;
 
     @DodoField(sortSeq = 2, nameKey = "dodo.privilege.admin.location.Province.namekey.inUse", isnullable = false)
     private Boolean           inUse;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.admin.location.Province.namekey.country", isnullable = false, queryParams = "eq(\"inUse\",true);")
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.admin.location.Province.namekey.country",
+            isnullable = false,
+            queryParams = "eq(\"inUse\",true);")
     private Country           country;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.admin.location.Province.namekey.cityList", addable = false, editable = false, listable = false, isShowWholeTree = true)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.admin.location.Province.namekey.cityList",
+            addable = false,
+            editable = false,
+            listable = false,
+            isShowWholeTree = true)
     private List<City>        cityList;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.admin.location.Province.namekey.iconImage", isFile = true, fileType = { @DodoFileType(titleKey = "dodo.file.upload.titlekey.images", extensions = "jpg,jpeg,gif,png,bmp") }, fileStyle = FileStyle.OnlyPath)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.admin.location.Province.namekey.iconImage",
+            isFile = true,
+            fileType = { @DodoFileType(
+                    titleKey = "dodo.file.upload.titlekey.images",
+                    extensions = "jpg,jpeg,gif,png,bmp") }, fileStyle = FileStyle.OnlyPath)
     private String            iconImage;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.admin.location.Province.namekey.description", listable = false, isRichText = true)
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.admin.location.Province.namekey.description",
+            listable = false,
+            isRichText = true)
     private String            description;
 
     @Override
@@ -90,7 +119,11 @@ public class Province extends BaseEntity implements java.io.Serializable {
         return country;
     }
 
-    @OneToMany(cascade = { CascadeType.REMOVE }, fetch = FetchType.LAZY, targetEntity = City.class, mappedBy = "province")
+    @OneToMany(
+            cascade = { CascadeType.REMOVE },
+            fetch = FetchType.LAZY,
+            targetEntity = City.class,
+            mappedBy = "province")
     @Fetch(FetchMode.SUBSELECT)
     @OrderBy("sortSeq asc")
     public List<City> getCityList() {

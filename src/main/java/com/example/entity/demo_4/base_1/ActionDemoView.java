@@ -23,7 +23,12 @@ import com.dodo.common.framework.entity.BaseEntity;
 @Entity
 @DynamicInsert
 // actions = { DodoAction.VIEW } = 只生成查看功能
-@DodoEntity(name = "部分Action(只读)", actions = { DodoAction.VIEW }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "部分Action(只读)演示", sortSeq = 3))
+@DodoEntity(
+        name = "部分Action(只读)",
+        actions = { DodoAction.VIEW },
+        levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7),
+        levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1),
+        levelThree = @DodoMenu(name = "部分Action(只读)演示", sortSeq = 3))
 public class ActionDemoView extends BaseEntity {
 
     private static final long serialVersionUID = 7953109081252074508L;

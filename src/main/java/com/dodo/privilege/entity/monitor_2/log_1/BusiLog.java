@@ -25,33 +25,72 @@ import com.dodo.privilege.entity.admin_1.base_1.Admin;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.monitor.log.BusiLog.entityKey", actions = { DodoAction.VIEW, DodoAction.CHART,
-        DodoAction.DELETE, DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2), levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.log.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.log.BusiLog.menuNameKey", sortSeq = 1))
+@DodoEntity(
+        nameKey = "dodo.privilege.monitor.log.BusiLog.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.CHART, DodoAction.DELETE, DodoAction.EXPORT },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.log.menuNameKey", sortSeq = 1),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.log.BusiLog.menuNameKey", sortSeq = 1))
 public class BusiLog extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -4135230699431949799L;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.entityClassName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.entityClassName",
+            addable = false,
+            editable = false)
     private String            entityClassName;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.entityName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.entityName",
+            addable = false,
+            editable = false)
     private String            entityName;
 
-    @DodoField(sortSeq = 2, nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.entityId", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 2,
+            nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.entityId",
+            addable = false,
+            editable = false)
     private String            entityId;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.updateType", addable = false, editable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.updateType",
+            addable = false,
+            editable = false,
+            queryOnList = true)
     private String            updateType;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.updatePerson", addable = false, editable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.updatePerson",
+            addable = false,
+            editable = false,
+            queryOnList = true)
     private Admin             updatePerson;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.updatePersonIp", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.updatePersonIp",
+            addable = false,
+            editable = false)
     private String            updatePersonIp;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.updateBrowserType", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.updateBrowserType",
+            addable = false,
+            editable = false)
     private String            updateBrowserType;
 
-    @DodoField(sortSeq = 7, nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.modifyLog", addable = false, isRichText = true, listable = false)
+    @DodoField(
+            sortSeq = 7,
+            nameKey = "dodo.privilege.monitor.log.BusiLog.namekey.modifyLog",
+            addable = false,
+            isRichText = true,
+            listable = false)
     private String            modifyLog;
 
     public String getEntityClassName() {

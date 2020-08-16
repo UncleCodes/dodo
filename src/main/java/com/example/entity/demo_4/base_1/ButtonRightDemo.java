@@ -26,15 +26,61 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "自定义按钮", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "自定义按钮演示", sortSeq = 7))
-@DodoButtonRight(name = "底部AJAX", path = "/bottom/ajax", model = DodoButtonRightModel.MODEL, location = DodoButtonLocation.BOTTOM, event = DodoButtonRightEvent.AJAX)
-@DodoButtonRight(name = "顶部AJAX", path = "/top/ajax", model = DodoButtonRightModel.MODEL, location = DodoButtonLocation.TOP, event = DodoButtonRightEvent.AJAX)
-@DodoButtonRight(name = "底部URL", path = "https://www.0yi0.com", model = DodoButtonRightModel.MODEL, location = DodoButtonLocation.BOTTOM, event = DodoButtonRightEvent.URL, urlTarget = "_blank")
-@DodoButtonRight(name = "顶部URL", path = "https://www.0yi0.com", model = DodoButtonRightModel.MODEL, location = DodoButtonLocation.TOP, event = DodoButtonRightEvent.URL, urlTarget = "_blank")
-@DodoButtonRight(name = "行AJAX", path = "/row/ajax", model = DodoButtonRightModel.ROW, event = DodoButtonRightEvent.AJAX)
-@DodoButtonRight(name = "后台URL", path = "${rootPath}/special/view.jhtml", model = DodoButtonRightModel.ROW, event = DodoButtonRightEvent.URL, urlTarget = "_blank")
-@DodoButtonRight(name = "前台URL", path = "${webHomeUrl}/test.html", model = DodoButtonRightModel.ROW, event = DodoButtonRightEvent.URL, urlTarget = "_blank")
-@DodoButtonRight(name = "站外URL", path = "https://www.0yi0.com", model = DodoButtonRightModel.ROW, event = DodoButtonRightEvent.URL, urlTarget = "_blank")
+@DodoEntity(
+        name = "自定义按钮",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7),
+        levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1),
+        levelThree = @DodoMenu(name = "自定义按钮演示", sortSeq = 7))
+@DodoButtonRight(
+        name = "底部AJAX",
+        path = "/bottom/ajax",
+        model = DodoButtonRightModel.MODEL,
+        location = DodoButtonLocation.BOTTOM,
+        event = DodoButtonRightEvent.AJAX)
+@DodoButtonRight(
+        name = "顶部AJAX",
+        path = "/top/ajax",
+        model = DodoButtonRightModel.MODEL,
+        location = DodoButtonLocation.TOP,
+        event = DodoButtonRightEvent.AJAX)
+@DodoButtonRight(
+        name = "底部URL",
+        path = "https://www.0yi0.com",
+        model = DodoButtonRightModel.MODEL,
+        location = DodoButtonLocation.BOTTOM,
+        event = DodoButtonRightEvent.URL,
+        urlTarget = "_blank")
+@DodoButtonRight(
+        name = "顶部URL",
+        path = "https://www.0yi0.com",
+        model = DodoButtonRightModel.MODEL,
+        location = DodoButtonLocation.TOP,
+        event = DodoButtonRightEvent.URL,
+        urlTarget = "_blank")
+@DodoButtonRight(
+        name = "行AJAX",
+        path = "/row/ajax",
+        model = DodoButtonRightModel.ROW,
+        event = DodoButtonRightEvent.AJAX)
+@DodoButtonRight(
+        name = "后台URL",
+        path = "${rootPath}/special/view.jhtml",
+        model = DodoButtonRightModel.ROW,
+        event = DodoButtonRightEvent.URL,
+        urlTarget = "_blank")
+@DodoButtonRight(
+        name = "前台URL",
+        path = "${webHomeUrl}/test.html",
+        model = DodoButtonRightModel.ROW,
+        event = DodoButtonRightEvent.URL,
+        urlTarget = "_blank")
+@DodoButtonRight(
+        name = "站外URL",
+        path = "https://www.0yi0.com",
+        model = DodoButtonRightModel.ROW,
+        event = DodoButtonRightEvent.URL,
+        urlTarget = "_blank")
 public class ButtonRightDemo extends BaseEntity {
 
     private static final long serialVersionUID = 5475359959248427119L;

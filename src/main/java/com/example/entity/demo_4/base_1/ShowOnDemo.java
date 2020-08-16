@@ -27,7 +27,12 @@ import com.example.enums.PersonKind;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "字段关联", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "字段关联演示", sortSeq = 11))
+@DodoEntity(
+        name = "字段关联",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7),
+        levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1),
+        levelThree = @DodoMenu(name = "字段关联演示", sortSeq = 11))
 public class ShowOnDemo extends BaseEntity {
 
     private static final long serialVersionUID = -880789857565402658L;
@@ -38,19 +43,40 @@ public class ShowOnDemo extends BaseEntity {
     @DodoField(sortSeq = 2, name = "帅吗？", showOnField = "personKind", showOnValue = "GeGe", isnullable = false)
     private Boolean           isField1;
 
-    @DodoField(sortSeq = 2, name = "自我介绍", showOnField = "personKind", showOnValue = "GeGe", isnullable = false, isRichText = true)
+    @DodoField(
+            sortSeq = 2,
+            name = "自我介绍",
+            showOnField = "personKind",
+            showOnValue = "GeGe",
+            isnullable = false,
+            isRichText = true)
     private String            desc1;
 
     @DodoField(sortSeq = 2, name = "漂亮吗？", showOnField = "personKind", showOnValue = "MeiMei", isnullable = false)
     private Boolean           isField2;
 
-    @DodoField(sortSeq = 2, name = "上传美照", showOnField = "personKind", showOnValue = "MeiMei", isnullable = false, isFile = true, fileStyle = FileStyle.OnlyPath, fileType = { @DodoFileType(title = "图片文件", extensions = "jpg,jpeg,gif,png,bmp") }, maxFileSize = 1)
+    @DodoField(
+            sortSeq = 2,
+            name = "上传美照",
+            showOnField = "personKind",
+            showOnValue = "MeiMei",
+            isnullable = false,
+            isFile = true,
+            fileStyle = FileStyle.OnlyPath,
+            fileType = { @DodoFileType(title = "图片文件", extensions = "jpg,jpeg,gif,png,bmp") },
+            maxFileSize = 1)
     private String            desc2;
 
     @DodoField(sortSeq = 2, name = "调皮吗？", showOnField = "personKind", showOnValue = "DiDi", isnullable = false)
     private Boolean           isField3;
 
-    @DodoField(sortSeq = 2, name = "兴趣爱好", showOnField = "personKind", showOnValue = "DiDi", isnullable = false, isTextArea = true)
+    @DodoField(
+            sortSeq = 2,
+            name = "兴趣爱好",
+            showOnField = "personKind",
+            showOnValue = "DiDi",
+            isnullable = false,
+            isTextArea = true)
     private String            desc3;
 
     @Column(length = 3)

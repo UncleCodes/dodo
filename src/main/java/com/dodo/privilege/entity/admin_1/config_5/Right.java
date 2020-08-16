@@ -32,16 +32,30 @@ import com.dodo.privilege.entity.admin_1.base_1.Role;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.config.Right.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.Right.menuNameKey", sortSeq = 3))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.config.Right.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.Right.menuNameKey", sortSeq = 3))
 @DodoTreeRef(mapParentField = "menuInfo", selfQueryParams = "isNull(\"managerRight\")")
 public class Right extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -2048846785994031276L;
 
-    @DodoField(sortSeq = -1, nameKey = "dodo.privilege.admin.config.Right.namekey.entityName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = -1,
+            nameKey = "dodo.privilege.admin.config.Right.namekey.entityName",
+            addable = false,
+            editable = false)
     @DodoShowColumn(sortSeq = 0)
     private String            entityName;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.config.Right.namekey.entityKey", listable = false, addable = false, editable = false)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.config.Right.namekey.entityKey",
+            listable = false,
+            addable = false,
+            editable = false)
     private String            entityKey;
 
     @DodoField(sortSeq = 1, nameKey = "dodo.privilege.admin.config.Right.namekey.rightName")
@@ -51,13 +65,25 @@ public class Right extends BaseEntity implements java.io.Serializable {
     @DodoField(sortSeq = 2, nameKey = "dodo.privilege.admin.config.Right.namekey.rightKey", listable = false)
     private String            rightKey;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.admin.config.Right.namekey.isSystem", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.admin.config.Right.namekey.isSystem",
+            addable = false,
+            editable = false)
     private Boolean           isSystem;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.admin.config.Right.namekey.managerRight", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.admin.config.Right.namekey.managerRight",
+            addable = false,
+            editable = false)
     private Right             managerRight;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.admin.config.Right.namekey.rightCode", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.admin.config.Right.namekey.rightCode",
+            addable = false,
+            editable = false)
     @DodoValueGenerator
     @DodoShowColumn(sortSeq = 0)
     private String            rightCode;
@@ -65,13 +91,22 @@ public class Right extends BaseEntity implements java.io.Serializable {
     @DodoField(sortSeq = 6, nameKey = "dodo.privilege.admin.config.Right.namekey.rightRemark", isTextArea = true)
     private String            rightRemark;
 
-    @DodoField(sortSeq = 7, nameKey = "dodo.privilege.admin.config.Right.namekey.menuInfo", isPopup = true, isnullable = false, queryParams = "eq(\"menuLevel\",DodoMenuLevel.LEVEL3)")
+    @DodoField(
+            sortSeq = 7,
+            nameKey = "dodo.privilege.admin.config.Right.namekey.menuInfo",
+            isPopup = true,
+            isnullable = false,
+            queryParams = "eq(\"menuLevel\",DodoMenuLevel.LEVEL3)")
     private MenuInfo          menuInfo;
 
     @DodoField(sortSeq = 8, nameKey = "dodo.privilege.admin.config.Right.namekey.rightLink", isRemoteCheck = true)
     private String            rightLink;
 
-    @DodoField(sortSeq = 9, nameKey = "dodo.privilege.admin.config.Right.namekey.className", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 9,
+            nameKey = "dodo.privilege.admin.config.Right.namekey.className",
+            addable = false,
+            editable = false)
     private String            className;
 
     private Set<Role>         roles;

@@ -35,25 +35,65 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.report.config.ReportEntity.entityKey", actions = { DodoAction.UPDATE,
-        DodoAction.DELETE, DodoAction.CHART, DodoAction.VIEW, DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3), levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportEntity.menuNameKey", sortSeq = 3))
-@DodoButtonRight(nameKey = "dodo.privilege.report.config.ReportEntity.button.design.namekey", path = "${rootPath}/sqlreport/design.jhtml", model = DodoButtonRightModel.ROW, event = DodoButtonRightEvent.URL)
-@DodoButtonRight(nameKey = "dodo.privilege.report.config.ReportEntity.button.viewreport.namekey", path = "${rootPath}/sqlreport/report.jhtml", model = DodoButtonRightModel.ROW, urlTarget = "_blank", event = DodoButtonRightEvent.URL)
-@DodoButtonRight(nameKey = "dodo.privilege.report.config.ReportEntity.button.design.namekey", path = "${rootPath}/sqlreport/design.jhtml", model = DodoButtonRightModel.MODEL, event = DodoButtonRightEvent.URL, urlTarget = "_blank", location = DodoButtonLocation.TOP)
+@DodoEntity(
+        nameKey = "dodo.privilege.report.config.ReportEntity.entityKey",
+        actions = { DodoAction.UPDATE, DodoAction.DELETE, DodoAction.CHART, DodoAction.VIEW, DodoAction.EXPORT },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.report.menuNameKey", sortSeq = 3),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.report.config.menuNameKey", sortSeq = 1),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.report.config.ReportEntity.menuNameKey", sortSeq = 3))
+@DodoButtonRight(
+        nameKey = "dodo.privilege.report.config.ReportEntity.button.design.namekey",
+        path = "${rootPath}/sqlreport/design.jhtml",
+        model = DodoButtonRightModel.ROW,
+        event = DodoButtonRightEvent.URL)
+@DodoButtonRight(
+        nameKey = "dodo.privilege.report.config.ReportEntity.button.viewreport.namekey",
+        path = "${rootPath}/sqlreport/report.jhtml",
+        model = DodoButtonRightModel.ROW,
+        urlTarget = "_blank",
+        event = DodoButtonRightEvent.URL)
+@DodoButtonRight(
+        nameKey = "dodo.privilege.report.config.ReportEntity.button.design.namekey",
+        path = "${rootPath}/sqlreport/design.jhtml",
+        model = DodoButtonRightModel.MODEL,
+        event = DodoButtonRightEvent.URL,
+        urlTarget = "_blank",
+        location = DodoButtonLocation.TOP)
 public class ReportEntity extends BaseEntity {
     private static final long serialVersionUID = -2026205118666904848L;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.report.config.ReportEntity.namekey.menu", isnullable = false, editable = false)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.report.config.ReportEntity.namekey.menu",
+            isnullable = false,
+            editable = false)
     private ReportMenu        menu;
 
-    @DodoField(sortSeq = 2, nameKey = "dodo.privilege.report.config.ReportEntity.namekey.name", isnullable = false, maxLength = 64, queryOnList = true, editable = false)
+    @DodoField(
+            sortSeq = 2,
+            nameKey = "dodo.privilege.report.config.ReportEntity.namekey.name",
+            isnullable = false,
+            maxLength = 64,
+            queryOnList = true,
+            editable = false)
     @DodoShowColumn(sortSeq = 0)
     private String            name;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.report.config.ReportEntity.namekey.execSql", isnullable = false, isTextArea = true, listable = false, editable = false)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.report.config.ReportEntity.namekey.execSql",
+            isnullable = false,
+            isTextArea = true,
+            listable = false,
+            editable = false)
     private String            execSql;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.report.config.ReportEntity.namekey.reportFields", editable = false, addable = false, listable = false)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.report.config.ReportEntity.namekey.reportFields",
+            editable = false,
+            addable = false,
+            listable = false)
     private List<ReportField> reportFields;
 
     @Column(length = 64)

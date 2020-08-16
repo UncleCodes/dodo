@@ -29,8 +29,12 @@ import com.dodo.privilege.enums.ConvertStatus;
  */
 @javax.persistence.Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.data.VideoConvertTask.entityKey", actions = { DodoAction.VIEW,
-        DodoAction.EXPORT, DodoAction.CHART, DodoAction.DELETE }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.VideoConvertTask.menuNameKey", sortSeq = 6))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.data.VideoConvertTask.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.EXPORT, DodoAction.CHART, DodoAction.DELETE },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.VideoConvertTask.menuNameKey", sortSeq = 6))
 @DodoRowRight(entityProperty = "admin")
 public class VideoConvertTask extends BaseEntity {
     private static final long serialVersionUID = 4545273587822222739L;
@@ -38,34 +42,70 @@ public class VideoConvertTask extends BaseEntity {
     @DodoField(sortSeq = -1, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.admin")
     private Admin             admin;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.convertStatus", queryOnList = true)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.convertStatus",
+            queryOnList = true)
     private ConvertStatus     convertStatus;
 
     @DodoField(sortSeq = 1, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.convertPercent")
     private String            convertPercent;
 
-    @DodoField(sortSeq = 2, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.targetEntity", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 2,
+            nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.targetEntity",
+            addable = false,
+            editable = false)
     private Entity            targetEntity;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.entityId", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.entityId",
+            addable = false,
+            editable = false)
     private String            entityId;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.fieldName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.fieldName",
+            addable = false,
+            editable = false)
     private String            fieldName;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.fieldShowName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.fieldShowName",
+            addable = false,
+            editable = false)
     private String            fieldShowName;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.extFieldName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.extFieldName",
+            addable = false,
+            editable = false)
     private String            extFieldName;
 
-    @DodoField(sortSeq = 7, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.extFieldShowName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 7,
+            nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.extFieldShowName",
+            addable = false,
+            editable = false)
     private String            extFieldShowName;
 
-    @DodoField(sortSeq = 8, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.videoFileId", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 8,
+            nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.videoFileId",
+            addable = false,
+            editable = false)
     private String            videoFileId;
 
-    @DodoField(sortSeq = 9, nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.videoFileStr", addable = false, editable = false, isVideo = true)
+    @DodoField(
+            sortSeq = 9,
+            nameKey = "dodo.privilege.admin.data.VideoConvertTask.namekey.videoFileStr",
+            addable = false,
+            editable = false,
+            isVideo = true)
     private String            videoFileStr;
 
     @Override

@@ -27,13 +27,20 @@ import com.dodo.privilege.enums.ExcelUpdateStatus;
  */
 @javax.persistence.Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.entityKey", actions = { DodoAction.VIEW,
-        DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.menuNameKey", sortSeq = 2))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.EXPORT },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.menuNameKey", sortSeq = 2))
 @DodoRowRight(entityProperty = "admin")
 public class ExcelUpdateInfo extends BaseEntity {
     private static final long serialVersionUID = -1528666175360594482L;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.namekey.updateStatus", queryOnList = true)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.namekey.updateStatus",
+            queryOnList = true)
     private ExcelUpdateStatus updateStatus;
 
     @DodoField(sortSeq = 2, nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.namekey.updatePercent")
@@ -63,7 +70,10 @@ public class ExcelUpdateInfo extends BaseEntity {
     @DodoField(sortSeq = 10, nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.namekey.failRows")
     private Integer           failRows;
 
-    @DodoField(sortSeq = 11, nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.namekey.triggerName", listable = false)
+    @DodoField(
+            sortSeq = 11,
+            nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.namekey.triggerName",
+            listable = false)
     private String            triggerName;
 
     @DodoField(sortSeq = 12, nameKey = "dodo.privilege.admin.data.ExcelUpdateInfo.namekey.sheetNote")

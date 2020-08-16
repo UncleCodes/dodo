@@ -25,8 +25,12 @@ import com.dodo.privilege.entity.admin_1.base_1.Admin;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.data.BreakPointInfo.entityKey", actions = { DodoAction.VIEW,
-        DodoAction.CHART, DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.BreakPointInfo.menuNameKey", sortSeq = 3))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.data.BreakPointInfo.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.CHART, DodoAction.EXPORT },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.BreakPointInfo.menuNameKey", sortSeq = 3))
 @DodoRowRight(entityProperty = "admin")
 public class BreakPointInfo extends BaseEntity {
     private static final long serialVersionUID = -5940620771612943217L;
@@ -64,7 +68,10 @@ public class BreakPointInfo extends BaseEntity {
     @DodoField(sortSeq = 11, nameKey = "dodo.privilege.admin.data.BreakPointInfo.namekey.chunkSize")
     private Integer           chunkSize;
 
-    @DodoField(sortSeq = 12, nameKey = "dodo.privilege.admin.data.BreakPointInfo.namekey.currChunk", infoTipKey = "dodo.privilege.admin.data.BreakPointInfo.infoTip.currChunk")
+    @DodoField(
+            sortSeq = 12,
+            nameKey = "dodo.privilege.admin.data.BreakPointInfo.namekey.currChunk",
+            infoTipKey = "dodo.privilege.admin.data.BreakPointInfo.infoTip.currChunk")
     private Integer           currChunk;
 
     @DodoField(sortSeq = 64, nameKey = "dodo.privilege.admin.data.BreakPointInfo.namekey.sessionId")

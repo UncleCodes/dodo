@@ -32,7 +32,13 @@ import com.example.enums.DemoEnum;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "单记录测试", singleRecord = true, actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "单记录测试", sortSeq = 11))
+@DodoEntity(
+        name = "单记录测试",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7),
+        levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1),
+        levelThree = @DodoMenu(name = "单记录测试", sortSeq = 11),
+        singleRecord = true)
 public class SingleRecord extends BaseEntity {
 
     private static final long serialVersionUID = 3130356442497463407L;
@@ -58,10 +64,22 @@ public class SingleRecord extends BaseEntity {
     @DodoField(sortSeq = 19, name = "富文本类型字段", isRichText = true)
     private String            richtextField;
 
-    @DodoField(sortSeq = 20, name = "单文件类型字段（限制图片）", isFile = true, fileStyle = FileStyle.OnlyPath, fileType = { @DodoFileType(title = "图片文件", extensions = "jpg,jpeg,gif,png,bmp") }, maxFileSize = 1)
+    @DodoField(
+            sortSeq = 20,
+            name = "单文件类型字段（限制图片）",
+            isFile = true,
+            fileStyle = FileStyle.OnlyPath,
+            fileType = { @DodoFileType(title = "图片文件", extensions = "jpg,jpeg,gif,png,bmp") },
+            maxFileSize = 1)
     private String            imageField;
 
-    @DodoField(sortSeq = 21, name = "单文件类型字段（限制ZIP）", isFile = true, fileStyle = FileStyle.OnlyPath, fileType = { @DodoFileType(title = "Zip文件", extensions = "zip") }, maxFileSize = 1)
+    @DodoField(
+            sortSeq = 21,
+            name = "单文件类型字段（限制ZIP）",
+            isFile = true,
+            fileStyle = FileStyle.OnlyPath,
+            fileType = { @DodoFileType(title = "Zip文件", extensions = "zip") },
+            maxFileSize = 1)
     private String            zipField;
 
     @DodoField(sortSeq = 22, name = "多文件类型字段", isFile = true, isMultiFile = true, maxFileSize = 1)

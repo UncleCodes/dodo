@@ -33,8 +33,12 @@ import com.dodo.privilege.enums.FieldRightType;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.config.FieldRight.entityKey", actions = { DodoAction.VIEW,
-        DodoAction.EXPORT, DodoAction.CHART }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.FieldRight.menuNameKey", sortSeq = 5))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.config.FieldRight.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.EXPORT, DodoAction.CHART },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.FieldRight.menuNameKey", sortSeq = 5))
 @DodoTreeRef(mapParentField = "field")
 public class FieldRight extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 4222565985045637831L;
@@ -42,7 +46,11 @@ public class FieldRight extends BaseEntity implements java.io.Serializable {
     @DodoShowColumn(sortSeq = 1)
     private FieldRightType    fieldRightType;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.admin.config.FieldRight.namekey.rightCode", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.admin.config.FieldRight.namekey.rightCode",
+            addable = false,
+            editable = false)
     @DodoValueGenerator
     @DodoShowColumn(sortSeq = 0)
     private String            rightCode;

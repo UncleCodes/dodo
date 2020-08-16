@@ -29,8 +29,12 @@ import com.dodo.privilege.enums.ConvertStatus;
  */
 @javax.persistence.Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.data.DocConvertTask.entityKey", actions = { DodoAction.VIEW,
-        DodoAction.EXPORT, DodoAction.DELETE, DodoAction.CHART }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.DocConvertTask.menuNameKey", sortSeq = 5))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.data.DocConvertTask.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.EXPORT, DodoAction.DELETE, DodoAction.CHART },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.data.menuNameKey", sortSeq = 4),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.data.DocConvertTask.menuNameKey", sortSeq = 5))
 @DodoRowRight(entityProperty = "admin")
 public class DocConvertTask extends BaseEntity {
     private static final long serialVersionUID = 4620199539932170447L;
@@ -38,34 +42,70 @@ public class DocConvertTask extends BaseEntity {
     @DodoField(sortSeq = -1, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.admin")
     private Admin             admin;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.convertStatus", queryOnList = true)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.convertStatus",
+            queryOnList = true)
     private ConvertStatus     convertStatus;
 
     @DodoField(sortSeq = 1, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.convertPercent")
     private String            convertPercent;
 
-    @DodoField(sortSeq = 2, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.targetEntity", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 2,
+            nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.targetEntity",
+            addable = false,
+            editable = false)
     private Entity            targetEntity;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.entityId", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.entityId",
+            addable = false,
+            editable = false)
     private String            entityId;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.fieldName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.fieldName",
+            addable = false,
+            editable = false)
     private String            fieldName;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.fieldShowName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.fieldShowName",
+            addable = false,
+            editable = false)
     private String            fieldShowName;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.extFieldName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.extFieldName",
+            addable = false,
+            editable = false)
     private String            extFieldName;
 
-    @DodoField(sortSeq = 7, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.extFieldShowName", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 7,
+            nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.extFieldShowName",
+            addable = false,
+            editable = false)
     private String            extFieldShowName;
 
-    @DodoField(sortSeq = 8, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.fileId", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 8,
+            nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.fileId",
+            addable = false,
+            editable = false)
     private String            fileId;
 
-    @DodoField(sortSeq = 9, nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.fileStr", addable = false, editable = false, isDoc = true)
+    @DodoField(
+            sortSeq = 9,
+            nameKey = "dodo.privilege.admin.data.DocConvertTask.namekey.fileStr",
+            addable = false,
+            editable = false,
+            isDoc = true)
     private String            fileStr;
 
     @Override

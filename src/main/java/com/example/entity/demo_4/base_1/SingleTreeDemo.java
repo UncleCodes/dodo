@@ -25,7 +25,12 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "单表树", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "单表树演示", sortSeq = 11))
+@DodoEntity(
+        name = "单表树",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7),
+        levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1),
+        levelThree = @DodoMenu(name = "单表树演示", sortSeq = 11))
 @DodoTreeRef(mapParentField = "parentDemo")
 public class SingleTreeDemo extends BaseEntity {
 

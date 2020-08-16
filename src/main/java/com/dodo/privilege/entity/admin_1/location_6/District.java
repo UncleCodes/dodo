@@ -29,12 +29,21 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.location.District.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.District.menuNameKey", sortSeq = 4))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.location.District.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.District.menuNameKey", sortSeq = 4))
 @DodoTreeRef(mapParentField = "city", selfQueryParams = "eq(\"inUse\",true);")
 public class District extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -3479293736348006559L;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.location.District.namekey.name", isnullable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.location.District.namekey.name",
+            isnullable = false,
+            queryOnList = true)
     @DodoShowColumn(sortSeq = 1)
     private String            name;
 
@@ -45,13 +54,28 @@ public class District extends BaseEntity implements java.io.Serializable {
     @DodoField(sortSeq = 2, nameKey = "dodo.privilege.admin.location.District.namekey.inUse", isnullable = false)
     private Boolean           inUse;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.admin.location.District.namekey.city", isPopup = true, isnullable = false, queryParams = "eq(\"inUse\",true)")
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.admin.location.District.namekey.city",
+            isPopup = true,
+            isnullable = false,
+            queryParams = "eq(\"inUse\",true)")
     private City              city;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.admin.location.District.namekey.iconImage", isFile = true, fileType = { @DodoFileType(titleKey = "dodo.file.upload.titlekey.images", extensions = "jpg,jpeg,gif,png,bmp") }, fileStyle = FileStyle.OnlyPath)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.admin.location.District.namekey.iconImage",
+            isFile = true,
+            fileType = { @DodoFileType(
+                    titleKey = "dodo.file.upload.titlekey.images",
+                    extensions = "jpg,jpeg,gif,png,bmp") }, fileStyle = FileStyle.OnlyPath)
     private String            iconImage;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.admin.location.District.namekey.description", listable = false, isRichText = true)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.admin.location.District.namekey.description",
+            listable = false,
+            isRichText = true)
     private String            description;
 
     @Override

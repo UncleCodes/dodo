@@ -25,7 +25,12 @@ import com.dodo.privilege.entity.admin_1.base_1.Admin;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(name = "行级权限(只能操作自己添加的数据)", actions = { DodoAction.ALL }, levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7), levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1), levelThree = @DodoMenu(name = "行级权限演示(1)", sortSeq = 9))
+@DodoEntity(
+        name = "行级权限(只能操作自己添加的数据)",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(name = "Demo系统", sortSeq = 7),
+        levelTwo = @DodoMenu(name = "基础演示", sortSeq = 1),
+        levelThree = @DodoMenu(name = "行级权限演示(1)", sortSeq = 9))
 @DodoRowRight(entityProperty = "addBy")
 public class RowRightDemo1 extends BaseEntity {
 

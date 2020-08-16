@@ -22,21 +22,45 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.monitor.log.SlowSqlLog.entityKey", actions = { DodoAction.VIEW, DodoAction.CHART,
-        DodoAction.EXPORT, DodoAction.DELETE }, levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2), levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.log.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.log.SlowSqlLog.menuNameKey", sortSeq = 4))
+@DodoEntity(
+        nameKey = "dodo.privilege.monitor.log.SlowSqlLog.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.CHART, DodoAction.EXPORT, DodoAction.DELETE },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.log.menuNameKey", sortSeq = 1),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.log.SlowSqlLog.menuNameKey", sortSeq = 4))
 public class SlowSqlLog extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -3058263835482460716L;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.monitor.log.SlowSqlLog.namekey.executeMillis", addable = false, editable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.monitor.log.SlowSqlLog.namekey.executeMillis",
+            addable = false,
+            editable = false,
+            queryOnList = true)
     private Long              executeMillis;
 
-    @DodoField(sortSeq = 2, nameKey = "dodo.privilege.monitor.log.SlowSqlLog.namekey.compareMillis", addable = false, editable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 2,
+            nameKey = "dodo.privilege.monitor.log.SlowSqlLog.namekey.compareMillis",
+            addable = false,
+            editable = false,
+            queryOnList = true)
     private Long              compareMillis;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.monitor.log.SlowSqlLog.namekey.executeSql", addable = false, editable = false, isTextArea = true)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.monitor.log.SlowSqlLog.namekey.executeSql",
+            addable = false,
+            editable = false,
+            isTextArea = true)
     private String            executeSql;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.monitor.log.SlowSqlLog.namekey.slowParameters", addable = false, editable = false, isTextArea = true)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.monitor.log.SlowSqlLog.namekey.slowParameters",
+            addable = false,
+            editable = false,
+            isTextArea = true)
     private String            slowParameters;
 
     @Lob

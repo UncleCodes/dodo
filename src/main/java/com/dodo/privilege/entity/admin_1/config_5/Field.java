@@ -32,8 +32,12 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @javax.persistence.Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.config.Field.entityKey", actions = { DodoAction.VIEW, DodoAction.CHART,
-        DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.Field.menuNameKey", sortSeq = 4))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.config.Field.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.CHART, DodoAction.EXPORT },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.Field.menuNameKey", sortSeq = 4))
 @DodoTreeRef(mapParentField = "entity")
 public class Field extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -6099663981803044881L;
@@ -147,7 +151,11 @@ public class Field extends BaseEntity implements java.io.Serializable {
     @DodoField(sortSeq = 33, nameKey = "dodo.privilege.admin.config.Field.namekey.treeTargetClass")
     private String            treeTargetClass;
 
-    @DodoField(sortSeq = 34, listable = false, editable = false, nameKey = "dodo.privilege.admin.config.Field.namekey.allFieldRights")
+    @DodoField(
+            sortSeq = 34,
+            listable = false,
+            editable = false,
+            nameKey = "dodo.privilege.admin.config.Field.namekey.allFieldRights")
     private List<FieldRight>  allFieldRights   = new ArrayList<FieldRight>();
 
     @DodoField(sortSeq = 35, nameKey = "dodo.privilege.admin.config.Field.namekey.isCascade")

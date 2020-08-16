@@ -36,12 +36,21 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.location.City.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.City.menuNameKey", sortSeq = 3))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.location.City.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.location.menuNameKey", sortSeq = 6),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.location.City.menuNameKey", sortSeq = 3))
 @DodoTreeRef(mapParentField = "province", selfQueryParams = "eq(\"inUse\",true);")
 public class City extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -8957279912911034215L;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.location.City.namekey.name", isnullable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.location.City.namekey.name",
+            isnullable = false,
+            queryOnList = true)
     @DodoShowColumn(sortSeq = 1)
     private String            name;
 
@@ -52,16 +61,35 @@ public class City extends BaseEntity implements java.io.Serializable {
     @DodoField(sortSeq = 2, nameKey = "dodo.privilege.admin.location.City.namekey.inUse", isnullable = false)
     private Boolean           inUse;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.admin.location.City.namekey.province", isnullable = false, queryParams = "eq(\"inUse\",true)")
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.admin.location.City.namekey.province",
+            isnullable = false,
+            queryParams = "eq(\"inUse\",true)")
     private Province          province;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.admin.location.City.namekey.areaList", addable = false, editable = false, listable = false)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.admin.location.City.namekey.areaList",
+            addable = false,
+            editable = false,
+            listable = false)
     private List<District>    areaList;
 
-    @DodoField(sortSeq = 5, nameKey = "dodo.privilege.admin.location.City.namekey.iconImage", isFile = true, fileType = { @DodoFileType(titleKey = "dodo.file.upload.titlekey.images", extensions = "jpg,jpeg,gif,png,bmp") }, fileStyle = FileStyle.OnlyPath)
+    @DodoField(
+            sortSeq = 5,
+            nameKey = "dodo.privilege.admin.location.City.namekey.iconImage",
+            isFile = true,
+            fileType = { @DodoFileType(
+                    titleKey = "dodo.file.upload.titlekey.images",
+                    extensions = "jpg,jpeg,gif,png,bmp") }, fileStyle = FileStyle.OnlyPath)
     private String            iconImage;
 
-    @DodoField(sortSeq = 6, nameKey = "dodo.privilege.admin.location.City.namekey.description", listable = false, isRichText = true)
+    @DodoField(
+            sortSeq = 6,
+            nameKey = "dodo.privilege.admin.location.City.namekey.description",
+            listable = false,
+            isRichText = true)
     private String            description;
 
     @Override
@@ -94,7 +122,11 @@ public class City extends BaseEntity implements java.io.Serializable {
         return province;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE }, targetEntity = District.class, mappedBy = "city")
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = { CascadeType.REMOVE },
+            targetEntity = District.class,
+            mappedBy = "city")
     @Fetch(FetchMode.SUBSELECT)
     @OrderBy("sortSeq asc")
     public List<District> getAreaList() {

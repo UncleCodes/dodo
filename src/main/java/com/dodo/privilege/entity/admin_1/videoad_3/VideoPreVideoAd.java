@@ -26,24 +26,51 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.entityKey", actions = { DodoAction.ALL }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.menuNameKey", sortSeq = 3), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.menuNameKey", sortSeq = 1))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.entityKey",
+        actions = { DodoAction.ALL },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.menuNameKey", sortSeq = 3),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.menuNameKey", sortSeq = 1))
 public class VideoPreVideoAd extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 1505112379327096013L;
 
-    @DodoField(sortSeq = -1, nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.namekey.adTitle", isnullable = false, queryOnList = true)
+    @DodoField(
+            sortSeq = -1,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.namekey.adTitle",
+            isnullable = false,
+            queryOnList = true)
     @DodoShowColumn(sortSeq = 0)
     private String            adTitle;
 
-    @DodoField(sortSeq = 0, nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.namekey.beginTime", dateFormat = "yyyy-MM-dd HH:mm:ss", isnullable = false)
+    @DodoField(
+            sortSeq = 0,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.namekey.beginTime",
+            dateFormat = "yyyy-MM-dd HH:mm:ss",
+            isnullable = false)
     private Date              beginTime;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.namekey.endTime", dateFormat = "yyyy-MM-dd HH:mm:ss", isnullable = false)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.namekey.endTime",
+            dateFormat = "yyyy-MM-dd HH:mm:ss",
+            isnullable = false)
     private Date              endTime;
 
-    @DodoField(sortSeq = 2, nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.namekey.adFile", isnullable = false, isFile = true, fileType = { @DodoFileType(titleKey = "dodo.file.upload.titlekey.videos", extensions = "flv,mp4,mov,f4v,3gp") })
+    @DodoField(
+            sortSeq = 2,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.namekey.adFile",
+            isnullable = false,
+            isFile = true,
+            fileType = { @DodoFileType(
+                    titleKey = "dodo.file.upload.titlekey.videos",
+                    extensions = "flv,mp4,mov,f4v,3gp") })
     private String            adFile;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.namekey.adRealUrl", isnullable = false)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.admin.videoad.VideoPreVideoAd.namekey.adRealUrl",
+            isnullable = false)
     private String            adRealUrl;
 
     public Date getBeginTime() {

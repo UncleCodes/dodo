@@ -32,8 +32,12 @@ import com.dodo.common.framework.entity.BaseEntity;
  */
 @javax.persistence.Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.admin.config.Entity.entityKey", actions = { DodoAction.VIEW, DodoAction.CHART,
-        DodoAction.EXPORT }, levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1), levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5), levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.Entity.menuNameKey", sortSeq = 2))
+@DodoEntity(
+        nameKey = "dodo.privilege.admin.config.Entity.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.CHART, DodoAction.EXPORT },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.admin.menuNameKey", sortSeq = 1),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.admin.config.menuNameKey", sortSeq = 5),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.admin.config.Entity.menuNameKey", sortSeq = 2))
 @DodoTreeRef(mapParentField = "menuInfo")
 public class Entity extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -1772991102203306349L;
@@ -68,7 +72,11 @@ public class Entity extends BaseEntity implements java.io.Serializable {
     @DodoField(sortSeq = 8, nameKey = "dodo.privilege.admin.config.Entity.namekey.wholeTreeMethod")
     private String            wholeTreeMethod;
 
-    @DodoField(sortSeq = 9, nameKey = "dodo.privilege.admin.config.Entity.namekey.allFields", listable = false, editable = false)
+    @DodoField(
+            sortSeq = 9,
+            nameKey = "dodo.privilege.admin.config.Entity.namekey.allFields",
+            listable = false,
+            editable = false)
     private Set<Field>        allFields;
 
     @DodoField(sortSeq = 10, nameKey = "dodo.privilege.admin.config.Entity.namekey.menuInfo")

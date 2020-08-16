@@ -25,24 +25,40 @@ import com.dodo.privilege.entity.admin_1.base_1.Admin;
  */
 @Entity
 @DynamicInsert
-@DodoEntity(nameKey = "dodo.privilege.monitor.log.ProcessLog.entityKey", actions = { DodoAction.VIEW, DodoAction.CHART,
-        DodoAction.EXPORT, DodoAction.DELETE }, levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2), levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.log.menuNameKey", sortSeq = 1), levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.log.ProcessLog.menuNameKey", sortSeq = 3))
+@DodoEntity(
+        nameKey = "dodo.privilege.monitor.log.ProcessLog.entityKey",
+        actions = { DodoAction.VIEW, DodoAction.CHART, DodoAction.EXPORT, DodoAction.DELETE },
+        levelOne = @DodoMenu(nameKey = "dodo.privilege.monitor.menuNameKey", sortSeq = 2),
+        levelTwo = @DodoMenu(nameKey = "dodo.privilege.monitor.log.menuNameKey", sortSeq = 1),
+        levelThree = @DodoMenu(nameKey = "dodo.privilege.monitor.log.ProcessLog.menuNameKey", sortSeq = 3))
 public class ProcessLog extends BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = -4135230699431949799L;
 
     @DodoField(sortSeq = 0, nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.servletPath", queryOnList = true)
     private String            servletPath;
 
-    @DodoField(sortSeq = 1, nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.requestParameters", isRichText = true, listable = false)
+    @DodoField(
+            sortSeq = 1,
+            nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.requestParameters",
+            isRichText = true,
+            listable = false)
     private String            requestParameters;
 
     @DodoField(sortSeq = 2, nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.requestIp", queryOnList = true)
     private String            requestIp;
 
-    @DodoField(sortSeq = 3, nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.browserType", addable = false, editable = false)
+    @DodoField(
+            sortSeq = 3,
+            nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.browserType",
+            addable = false,
+            editable = false)
     private String            browserType;
 
-    @DodoField(sortSeq = 4, nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.requestHeaders", isRichText = true, listable = false)
+    @DodoField(
+            sortSeq = 4,
+            nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.requestHeaders",
+            isRichText = true,
+            listable = false)
     private String            requestHeaders;
 
     @DodoField(sortSeq = 5, nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.actionBean", queryOnList = true)
@@ -75,7 +91,12 @@ public class ProcessLog extends BaseEntity implements java.io.Serializable {
     @DodoField(sortSeq = 14, nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.admin")
     private Admin             admin;
 
-    @DodoField(sortSeq = 15, nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.exceptionInfo", isTextArea = true, isEncode = false, listable = false)
+    @DodoField(
+            sortSeq = 15,
+            nameKey = "dodo.privilege.monitor.log.ProcessLog.namekey.exceptionInfo",
+            isTextArea = true,
+            isEncode = false,
+            listable = false)
     private String            exceptionInfo;
 
     public String getBrowserType() {
