@@ -687,7 +687,7 @@ public class CommonUtil {
         }
         String latitude = request.getParameter(propertyName + "Latitude");
         String longitude = request.getParameter(propertyName + "Longitude");
-        if (StringUtils.isNotBlank(longitude) || StringUtils.isNotBlank(latitude) || attr.size() > 0) {
+        if (StringUtils.isNotBlank(longitude) || StringUtils.isNotBlank(latitude) || (attr != null && attr.size() > 0)) {
             DodoLocationInfo locationInfo = new DodoLocationInfo();
             locationInfo.setLatitude(latitude);
             locationInfo.setLongitude(longitude);

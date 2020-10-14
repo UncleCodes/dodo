@@ -135,6 +135,12 @@ public class DodoPDFConverter {
                                 .replaceAll("\\.", "\\\\") : DodoPDFConverter.class.getPackage().getName()
                                 .replaceAll("\\.", "/")) + File.separator + "xpdf-chinese-simplified";
             }
+
+            if (DodoShowDocUtil.pdfCommand == null) {
+                LOGGER.info("Configuring PDFConverter....Error! Not configured properly.");
+                return;
+            }
+
             // 文件路径没有空格
             if (!languagedir.contains(" ")) {
                 DodoShowDocUtil.pdfCommand = DodoShowDocUtil.pdfCommand.replace("\"", "");

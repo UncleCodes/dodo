@@ -97,6 +97,11 @@ public class DodoOfficeConverter {
                 allSupportSb.append(format.getExtension());
             }
 
+            if (DodoShowDocUtil.officeHome == null) {
+                LOGGER.info("Configuring DodoOfficeConverter....Error! Not configured properly.");
+                return;
+            }
+
             LOGGER.info("Configuring DodoOfficeConverter....");
             setOfficeHome(DodoShowDocUtil.officeHome);
             setHost(DodoShowDocUtil.officeHost);
