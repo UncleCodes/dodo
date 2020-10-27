@@ -119,10 +119,6 @@ public class DodoOfficeConverter {
     }
 
     public static Boolean isSupport(String fileExtends) {
-        if (!isInit) {
-            LOGGER.error("Please configure DodoOfficeConverter has been correctly configured!");
-            return null;
-        }
         return documentFormatRegistry.getFormatByExtension(fileExtends) != null;
     }
 

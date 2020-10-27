@@ -332,6 +332,7 @@ public final class DodoFrameworkConfigUtil {
             try {
                 support = Arrays.asList(get("dodo.video.converter.support").split(","));
             } catch (Exception e) {
+                support = Arrays.asList("asx,asf,mpg,3gp,mp4,mov,avi,flv,wmv9,rm,rmvb,wmv".split(","));
             }
         }
     }
