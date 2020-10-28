@@ -6,21 +6,31 @@
 * 组织在这里（QQ①群）：678785173
 
 ## 介绍
-一个基于代码生成引擎的Java Web自动化开发框架，开发效率提升90+%，后台管理系统秒级生成。10套后台管理系统模板，让你随心所欲！
+一个基于代码生成引擎的Java Web自动化开发框架，开发效率提升90+%，后台管理系统秒级生成。
 
-### 优势：
+### 优势及场景：
 
 **（1）重复的工作，代码生成，不再烦心。**
 
-**（2）省下更多的时间，可以：学别的...干别的...随你。**
+**（2）学习成本低：仅需学习如何对实体类加注解即可；实体类的注解代码生成完成后，可以删掉，不影响运行**
 
-### 适合场景：
+**（3）中小型Java Web系统、APP或者小程序的后台管理系统，基本上生成无须或者很少改动。让精力更加focus在业务逻辑上。**
 
-**中小型Java Web系统、APP或者小程序的后台管理系统，基本上生成无须或者很少改动。**
+**（4）共十一套页面模板，随意挑选**
 
-**让精力更加focus在业务逻辑上**
-
-**目前10套模板，作为后台管理系统来说，够用了；现代化的第十一套模板还在开发中，最近比较忙，发布时间还不能确定。**
+## 示例效果图
+![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG37.jpeg)
+![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG38.jpeg)
+![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG74.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG50.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG56.jpeg)
+![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG85.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG57.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG62.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG64.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG65.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG67.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG70.jpeg)
 
 ## Get Started
 ### 第一步：POJO 实体类注解
@@ -67,15 +77,24 @@
 
 
 ### 第三步：Coffee time
-### 好刺激，完事了，不敢相信！来杯82年的咖啡压压惊
+### 部署三联：刷新、打包、部署；大部分项目产出的管理后台无须任何改动。
 
-## DEMOS
+## DEMOS（11套页面模板）
 ### DEMO系统的编码量只是写了几个实体类而已，其余全部由引擎生成，包括权限管理、基础管理等模块
+
+####（1）Dodo Framework Pro 在线演示
+* [Durian：页面模板采用最新版本的layui-v2.5.6](https://admin-pro.0yi0.com/back/enjoy/login_index.jhtml) --> 强烈推荐 + 置顶++ 
+
+####（2）Dodo Framework 在线演示
+* [Cherry：导航树模式，jquery+html](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=cherry) --> 强烈推荐 + 置顶1
+
+* [Jujube：easyui抽屉树+换肤+极速，easyui](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=jujube) --> 强烈推荐 + 置顶2
+
+* [Grape：bootstrap 模式，bootstrap](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=grape) --> 强烈推荐 + 置顶3
+
 * [Apple：传统导航+菜单模式，jquery+html](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=apple)
 
 * [Banana：导航+菜单模式，jquery.ui+html](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=banana)
-
-* [Cherry：导航树模式，jquery+html](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=cherry)
 
 * [Duke：easyui导航树框架+html内页模式，easyui+html](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=duke)
 
@@ -83,13 +102,9 @@
 
 * [Gingko：dwz框架+html内页模式，dwz+html](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=gingko)
 
-* [Grape：bootstrap 模式，bootstrap](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=grape)
-
 * [Greengage：easyui导航树模式，easyui](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=greengage)
 
 * [Hawthorn：easyui抽屉树模式，easyui](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=hawthorn)
-
-* [Jujube：easyui抽屉树+换肤+极速，easyui](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=jujube)
 
 
 ## What is Dodo?
