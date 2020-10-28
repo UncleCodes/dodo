@@ -19,12 +19,12 @@
 **（4）共十一套页面模板，随意挑选**
 
 ## 示例效果图
-![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG37.jpeg)
-![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG38.jpeg)
-![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG74.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG37.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG38.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG74.jpeg)
 ![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG50.jpeg)
 ![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG56.jpeg)
-![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG85.jpeg)
+![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG85.jpeg)
 ![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG57.jpeg)
 ![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG62.jpeg)
 ![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG64.jpeg)
