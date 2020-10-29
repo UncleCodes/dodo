@@ -1,8 +1,15 @@
-# Dodo <font color="#376BFB">Framework</font>
+# Dodo <font color="#376BFB">Framework</font> Classic
 
 ## 资源
-* DodoFramework 项目主站 <https://www.0yi0.com>
-* 查看在线文档 <https://www.0yi0.com/doc/>
+* DodoFramework 项目主站 <https://www.0yi0.com> <https://www.bydodo.com>
+* 在线文档 <https://www.0yi0.com/doc/>
+* 技术列表 <https://www.0yi0.com/doc/technology-list.html>
+* 在线演示 <https://www.0yi0.com/doc/view_demos.html>
+* 让项目先跑起来 <https://www.0yi0.com/doc/run_demo_project.html>
+* 开发三步走 <https://www.0yi0.com/doc/dev_flow.html>
+* 在线报表 <https://www.0yi0.com/doc/online_report.html>
+* 动态模型扩展 <https://www.0yi0.com/doc/model_extend.html>
+* TODOS <https://www.0yi0.com/doc/todos.html>
 * 组织在这里（QQ①群）：678785173
 
 ## 介绍
@@ -16,15 +23,15 @@
 
 **（3）中小型Java Web系统、APP或者小程序的后台管理系统，基本上生成无须或者很少改动。让精力更加focus在业务逻辑上。**
 
-**（4）共十一套页面模板，随意挑选**
+**（4）Classic版本支持10套模板，Pro版本支持1套模板**
 
 ## 示例效果图
-![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG37.jpeg)
-![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG38.jpeg)
-![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG74.jpeg)
+![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG37.jpeg)
+![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG38.jpeg)
+![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG74.jpeg)
 ![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG50.jpeg)
 ![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG56.jpeg)
-![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG85.jpeg)
+![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG85.jpeg)
 ![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG57.jpeg)
 ![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG62.jpeg)
 ![](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG64.jpeg)
@@ -80,13 +87,13 @@
 ### 部署三联：刷新、打包、部署；大部分项目产出的管理后台无须任何改动。
 
 ## DEMOS（11套页面模板）
-### DEMO系统的编码量只是写了几个实体类而已，其余全部由引擎生成，包括权限管理、基础管理等模块
+### DEMO系统的编码量只是写了几个实体类模型而已，其余全部由引擎生成，包括权限管理、基础管理等模块
 
 **（1）Dodo Framework Pro 在线演示**
 
 * [Durian：页面模板采用最新版本的layui-v2.5.6](https://admin-pro.0yi0.com/back/enjoy/login_index.jhtml) --> 强烈推荐 + 置顶++ 
 
-**（2）Dodo Framework 在线演示**
+**（2）Dodo Framework Classic 在线演示**
 
 * [Cherry：导航树模式，jquery+html](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=cherry) --> 强烈推荐 + 置顶1
 
@@ -172,9 +179,19 @@ HQLHelper：链式编写HQL查询语句，无需了解HQL知识；另外支持JD
 * 更多特性开发中...
 
 
-## License
-* Dodo的开源协议 **Apache-2.0 License**.
-* Dodo可以被用来**完全免费**开发任何**私有的或者商业**项目。
-* 但是将Dodo本身（包括以任何形式的修改）作为一个工具或者开发平台、框架而从事商业活动，是不被授权允许的。Dodo保留运用法律手段的权利。
-* **软著登记号：2019SR0331113**
+## 授权协议及声明
+* 已开源的全部代码，采用 **Apache-2.0 License** 授权协议进行发行。
+* Dodo Framework可以被用来**完全免费**开发任何**私有的或者商业**项目。
+* 将Dodo Framework本身（包括以任何形式的修改）作为一个工具或者开发平台、框架而从事商业活动，是不被授权允许的。Dodo Framework保留运用法律手段的权利。
+* 在使用过程中，请保留代码中的协议、版权声明和其他原作者规定需要包含的说明。
+* 请了解并知悉，Dodo Framework Classic对实体类模型数量无任何限制。Dodo Framework Pro社区版实体类模型数量不可超过15个。
+* Dodo Framework Pro无限制授权：<https://www.0yi0.com> <https://www.bydodo.com>
+
+## 技术服务与支持
+* 没有资金的支撑就很难得到发展，特别是一个好的产品，如果 Dodo Framework 帮助了您，请为我们点赞Star。
+* 支持我们，我们将协助您更加降低研发成本、提高研发效率，请给我们一些动力吧，在此非常感谢已支持我们的朋友！
+* 联系方式 QQ群：678785173
+* 官方网站：<https://www.bydodo.com>
+
+
 
