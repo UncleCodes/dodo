@@ -15,15 +15,17 @@
 ## 介绍
 一个基于代码生成引擎的Java Web自动化开发框架，开发效率提升90+%，后台管理系统秒级生成。
 
-### 优势及场景：
+上手成本极低（几个注解，仅应用在Java 实体类），大众化的基础框架（Spring MVC、Hibernate、Freemarker），瞬间生成完全手写代码，代码注释完备，安全健壮，命名规范，可读性高，可维护，可扩展，针对特定需求可轻松修改。
 
-**（1）重复的工作，代码生成，不再烦心。**
+## 上手成本极低
+**仅需学习如何对实体类加注解即可；实体类的注解代码生成完成后，可以删掉，不影响运行**
 
-**（2）学习成本低：仅需学习如何对实体类加注解即可；实体类的注解代码生成完成后，可以删掉，不影响运行**
+## 适合场景
 
-**（3）中小型Java Web系统、APP或者小程序的后台管理系统，基本上生成无须或者很少改动。让精力更加focus在业务逻辑上。**
+**中小型Java Web系统、APP或者小程序的后台管理系统，基本上生成无须或者很少改动。让精力更加focus在业务逻辑上。**
 
-**（4）Classic版本支持10套模板，Pro版本支持1套模板**
+## 共十一套页面模板
+**Classic版本支持10套模板，Pro版本支持1套模板**![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)
 
 ## 示例效果图
 ![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG37.jpeg)
@@ -91,15 +93,16 @@
 
 **（1）DodoFramework Pro 在线演示**
 
-* [Durian：页面模板采用最新版本的layui-v2.5.6](https://admin-pro.0yi0.com/back/enjoy/login_index.jhtml) --> 强烈推荐 + 置顶++ 
+* [Durian：页面模板采用最新版本的layui-v2.5.6](https://admin-pro.0yi0.com/back/enjoy/login_index.jhtml) ![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)
+
 
 **（2）DodoFramework Classic 在线演示**
 
-* [Cherry：导航树模式，jquery+html](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=cherry) --> 强烈推荐 + 置顶1
+* [Cherry：导航树模式，jquery+html](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=cherry) ![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)
 
-* [Jujube：easyui抽屉树+换肤+极速，easyui](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=jujube) --> 强烈推荐 + 置顶2
+* [Jujube：easyui抽屉树+换肤+极速，easyui](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=jujube) ![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)
 
-* [Grape：bootstrap 模式，bootstrap](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=grape) --> 强烈推荐 + 置顶3
+* [Grape：bootstrap 模式，bootstrap](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=grape) 
 
 * [Apple：传统导航+菜单模式，jquery+html](https://admin.0yi0.com/back/enjoy/login_index.jhtml?dodo_theme=apple)
 
@@ -119,7 +122,7 @@
 ## What is Dodo?
 一句话概括这个项目：这是一个基于代码生成引擎的Java Web系统自动化开发框架。简单的说，就是一个Java Web整合的基础框架加上一个代码生成引擎。
 
-学习成本极低（几个注解，仅应用在Java 实体类），大众化的基础框架（Spring MVC、Hibernate、Freemarker），瞬间生成完全手写代码，代码注释完备，安全健壮，命名规范，可读性高，可维护，可扩展，针对特定需求可轻松修改。
+上手成本极低（几个注解，仅应用在Java 实体类），大众化的基础框架（Spring MVC、Hibernate、Freemarker），瞬间生成完全手写代码，代码注释完备，安全健壮，命名规范，可读性高，可维护，可扩展，针对特定需求可轻松修改。
 
 ### （1）安全稳定的基础框架
 基于Spring MVC-5.1、Hibernate-5.4、Freemarker、Druid框架组合
@@ -189,7 +192,7 @@ HQLHelper：链式编写HQL查询语句，无需了解HQL知识；另外支持JD
 
 ## 技术服务与支持
 * 没有资金的支撑就很难得到发展，特别是一个好的产品，如果 DodoFramework 帮助了您，请为我们点赞Star。
-* 支持我们，我们将协助您更加降低研发成本、提高研发效率，请给我们一些动力吧，在此非常感谢已支持我们的朋友！
+* 支持我们，我们将协助您更加降低研发成本、提高研发效率，请给我们一些动力和支持吧，非常感谢已支持我们的朋友！
 * 联系方式 QQ群：678785173
 * 官方网站：<https://www.bydodo.com>
 
