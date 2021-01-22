@@ -27,6 +27,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 
+import com.dodo.utils.CommonUtil;
 import com.dodo.utils.config.DodoFrameworkConfigUtil.DodoCommonConfigUtil;
 import com.dodo.utils.config.DodoFrameworkConfigUtil.DodoUploaderUtil;
 import com.dodo.utils.file.FileUtils;
@@ -64,7 +65,7 @@ public class Uploader {
     private String                         title        = "";
 
     // 保存路径
-    private String                         savePath     = "upload";
+    private String                         savePath     = CommonUtil.getWebappName() + "/upload";
     // 文件允许格式
     private String[]                       allowFiles   = { ".rar", ".doc", ".docx", ".zip", ".pdf", ".txt", ".swf",
             ".wmv", ".gif", ".png", ".jpg", ".jpeg", ".bmp" };

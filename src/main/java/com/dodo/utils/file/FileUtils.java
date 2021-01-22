@@ -904,6 +904,7 @@ public class FileUtils {
 
                 if (fileFieldOldFile.exists()) {
                     if (StringUtils.isNotBlank(ossBucket)) {
+                        dodoFile.setHttpPath("/" + CommonUtil.getWebappName() + dodoFile.getHttpPath());
                         OSSService.upload(fileFieldOldFile, dodoFile.getHttpPath().substring(1), ossBucket);
                         dodoFile.setHttpPath(OSSService.getDomain(ossBucket) + dodoFile.getHttpPath());
                         dodoFile.setFilePath(fileFieldOldFile.getAbsolutePath().replace(getUploadTempRootDir(), ""));

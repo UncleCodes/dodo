@@ -85,6 +85,10 @@ public class CommonUtil {
         return System.getProperty(DodoWebAppRootListener.WEB_APP_ROOT_KEY);
     }
 
+    public static String getWebappName() {
+        return System.getProperty(DodoWebAppRootListener.WEB_APP_NAME_KEY);
+    }
+
     public static String escapeHtml(String string) {
         if (StringUtils.isBlank(string)) {
             return "";
