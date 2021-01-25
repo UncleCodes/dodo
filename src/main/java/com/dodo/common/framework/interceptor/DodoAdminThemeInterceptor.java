@@ -47,6 +47,7 @@ public class DodoAdminThemeInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
             ModelAndView modelAndView) throws Exception {
         if (modelAndView != null && StringUtils.isNotBlank(modelAndView.getViewName())) {
+            String viewName = modelAndView.getViewName();
             String dodo_theme = request.getParameter(DODO_THEME_KEY);
             if (StringUtils.isBlank(dodo_theme)) {
                 dodo_theme = WebUtil.getCookie(request, DODO_THEME_KEY);
@@ -55,11 +56,14 @@ public class DodoAdminThemeInterceptor extends HandlerInterceptorAdapter {
                 dodo_theme = defaultTheme;
             }
 
-            if (StringUtils.isNotBlank(dodo_theme)) {
-                modelAndView.setViewName(new StringBuilder(dodo_theme).append("/").append(modelAndView.getViewName())
-                        .toString());
+            // 强制
+            if (viewName.startsWith("/")) {
+                modelAndView.setViewName(viewName.substring(1));
             }
-
+            // 模板下页面
+            else if (StringUtils.isNotBlank(dodo_theme)) {
+                modelAndView.setViewName(String.format("%s/%s", dodo_theme, viewName));
+            }
         }
     }
 }
