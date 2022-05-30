@@ -1,4 +1,7 @@
 # Dodo<font color="#376BFB">Framework</font> Classic
+**Classic版本目前不做特性开发，仅作bug维护**
+
+**更多新特性，请移步至：Pro版本<https://gitee.com/uncle.code/dodo-pro>**![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)
 
 ## 资源
 * DodoFramework 项目主站 <https://www.0yi0.com> <https://www.bydodo.com>
@@ -25,7 +28,7 @@
 **中小型Java Web系统、APP或者小程序的后台管理系统，基本上生成无须或者很少改动。让精力更加focus在业务逻辑上。**
 
 ## 共十一套页面模板
-**Classic版本支持10套模板，Pro版本<https://github.com/UncleCodes/dodo-pro>支持1套模板**![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)
+**Classic版本支持10套模板，Pro版本<https://gitee.com/uncle.code/dodo-pro>支持1套模板**![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)![](https://www.0yi0.com/doc/images/hot.gif)
 
 ## 示例效果图
 ![登录图片](https://www.0yi0.com/doc/dodo_pro_snapshots/WechatIMG37.jpeg)
