@@ -67,7 +67,7 @@
 	<org.bouncycastle.bctsp-jdk15.version>1.46</org.bouncycastle.bctsp-jdk15.version>
 	<org.apache.poi.version>4.1.0</org.apache.poi.version>
 	<ch.qos.logback.version>1.2.3</ch.qos.logback.version>
-	<mysql-connector-java.version>8.0.16</mysql-connector-java.version>
+	<mysql-connector-java.version>8.0.28</mysql-connector-java.version>
 	<com.alibaba.druid.version>1.1.19 </com.alibaba.druid.version>
 	<javax.activation.version>1.1.1</javax.activation.version>
 	<org.quartz-scheduler.version>2.3.1</org.quartz-scheduler.version>
