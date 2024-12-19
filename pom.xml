@@ -57,7 +57,7 @@
 	<commons-beanutils.version>1.9.3</commons-beanutils.version>
 	<org.slf4j.jcl-over-slf4j.version>1.7.25</org.slf4j.jcl-over-slf4j.version>
 	<com.octo.captcha.jcaptcha.version>1.0</com.octo.captcha.jcaptcha.version>
-	<org.springframework.security.version>5.2.1.RELEASE</org.springframework.security.version>
+	<org.springframework.security.version>5.3.4.RELEASE</org.springframework.security.version>
 	<org.hibernate.core.version>5.4.3.Final</org.hibernate.core.version>
 	<hibernate-jpa-2.1-api.version>1.0.2.Final</hibernate-jpa-2.1-api.version>
 	<org.artofsolving.jodconverter-core.version>3.0-beta-4-jahia5</org.artofsolving.jodconverter-core.version>
