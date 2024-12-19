@@ -51,7 +51,7 @@
 	<commons-io.version>2.6</commons-io.version>
 	<commons-lang3.version>3.9</commons-lang3.version>
 	<javassist.version>3.25.0-GA</javassist.version>
-	<httpclient.version>4.5.9</httpclient.version>
+	<httpclient.version>4.5.13</httpclient.version>
 	<commons-collections.version>3.2.1</commons-collections.version>	<!-- commons-collections4  4.4 -->
 	<com.fasterxml.jackson.core.version>2.10.1</com.fasterxml.jackson.core.version>
 	<commons-beanutils.version>1.9.3</commons-beanutils.version>
