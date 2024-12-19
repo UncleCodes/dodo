@@ -65,7 +65,7 @@
 	<com.itextpdf.version>5.1.1</com.itextpdf.version><!-- 5.5.13 -->
 	<org.bouncycastle.bcmail-jdk15.version>1.46</org.bouncycastle.bcmail-jdk15.version>
 	<org.bouncycastle.bctsp-jdk15.version>1.46</org.bouncycastle.bctsp-jdk15.version>
-	<org.apache.poi.version>4.1.0</org.apache.poi.version>
+	<org.apache.poi.version>5.2.1</org.apache.poi.version>
 	<ch.qos.logback.version>1.2.3</ch.qos.logback.version>
 	<mysql-connector-java.version>8.0.16</mysql-connector-java.version>
 	<com.alibaba.druid.version>1.1.19 </com.alibaba.druid.version>
