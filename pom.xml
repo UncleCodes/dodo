@@ -48,7 +48,7 @@
   	<org.freemarker.version>2.3.28</org.freemarker.version>	
   	<javax.servlet-api.version>3.1.0</javax.servlet-api.version><!-- 4.0.1 -->
   	<javax.mail-api.version>1.5.6</javax.mail-api.version>
-	<commons-io.version>2.6</commons-io.version>
+	<commons-io.version>2.7</commons-io.version>
 	<commons-lang3.version>3.9</commons-lang3.version>
 	<javassist.version>3.25.0-GA</javassist.version>
 	<httpclient.version>4.5.9</httpclient.version>
